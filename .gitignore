@@ -1,0 +1,9 @@
+# 系統檔
+.DS_Store
+Thumbs.db
+
+# 只保留 webp，不上傳原始 JPG
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG

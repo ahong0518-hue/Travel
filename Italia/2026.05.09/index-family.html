@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>義大利深情十五天</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#1a4a2e;--green2:#2d7a4f;--green-light:#edf5f0;
+  --red:#CE2B37;--cream:#FAF8F3;--paper:#F4EFE6;
+  --gold:#9B7A2A;--text:#1e1e1e;--muted:#555;--border:#ddd;
+  --font:'Microsoft JhengHei','微軟正黑體','Noto Sans TC',Arial,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--cream);color:var(--text);}
+.site-header{background:var(--green);padding:32px 40px 28px;position:relative;}
+.site-title{color:#fff;font-size:28px;font-weight:300;letter-spacing:5px;}
+.site-title em{color:#e8a0a6;font-style:normal;font-weight:400;}
+.site-sub{color:rgba(255,255,255,0.45);font-size:12px;letter-spacing:3px;margin-top:7px;}
+.header-flag{position:absolute;right:36px;top:50%;transform:translateY(-55%);font-size:46px;opacity:0.2;}
+.spot-section{max-width:880px;margin:32px auto;background:#fff;border-radius:12px;border:0.5px solid var(--border);overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,0.07);}
+.spot-head{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 32px 20px;border-bottom:0.5px solid var(--border);background:var(--paper);position:relative;}
+.spot-head::before{content:'';position:absolute;top:0;left:0;width:7px;height:100%;background:linear-gradient(to bottom,#009246 0%,#009246 33.33%,#fff 33.33%,#fff 66.66%,#CE2B37 66.66%,#CE2B37 100%);}
+.spot-head::after{content:'';position:absolute;top:0;left:0;width:60px;height:7px;background:linear-gradient(to right,#009246 0%,#009246 33.33%,#fff 33.33%,#fff 66.66%,#CE2B37 66.66%,#CE2B37 100%);}
+.spot-head-left{flex:1;padding-left:12px;}
+.spot-eyebrow{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.badge{font-size:12px;padding:4px 13px;border-radius:12px;font-family:var(--font);font-weight:500;}
+.badge-day{background:var(--red);color:#fff;}
+.badge-unesco{background:var(--green-light);color:var(--green);border:0.5px solid var(--green2);}
+.spot-title{font-size:30px;font-weight:400;color:var(--green);letter-spacing:3px;}
+.spot-en{font-size:14px;color:var(--muted);font-style:italic;margin-top:5px;letter-spacing:1px;font-family:Georgia,serif;}
+.map-thumb{flex-shrink:0;margin-left:24px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.map-thumb-box{width:82px;height:126px;border:1.5px solid var(--green2);border-radius:8px;background:var(--green-light);overflow:hidden;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.map-thumb:hover .map-thumb-box{border-color:var(--red);box-shadow:0 2px 14px rgba(206,43,55,0.28);}
+.map-thumb-label{font-size:11px;color:var(--muted);letter-spacing:0.5px;}
+/* ── Accordion ── */
+.accordion{border-top:0.5px solid var(--border);}
+details.acc-item{border-bottom:0.5px solid var(--border);}
+details.acc-item > summary{
+  padding:13px 32px;cursor:pointer;list-style:none;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:15px;color:var(--muted);font-family:var(--font);
+  font-weight:400;letter-spacing:1px;transition:color 0.15s;
+  user-select:none;
+}
+details.acc-item > summary::-webkit-details-marker{display:none;}
+details.acc-item > summary::after{content:'＋';font-size:14px;color:var(--muted);transition:color 0.15s;}
+details.acc-item[open] > summary{color:var(--red);}
+details.acc-item[open] > summary::after{content:'－';color:var(--red);}
+.acc-body{padding:6px 32px 22px;}
+.acc-body p{font-size:18px;line-height:1.75;color:#2e2e2e;margin-bottom:14px;font-family:var(--font);font-weight:300;}
+.acc-body p:last-child{margin-bottom:0;}
+.acc-body b{color:var(--green);font-weight:500;}
+.acc-body em{color:var(--gold);font-style:normal;font-weight:400;}
+/* ── Photo Grid ── */
+.photo-wrap{padding:20px 32px 28px;}
+.section-label{font-size:12px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+.masonry{columns:3;column-gap:8px;}
+@media(max-width:520px){.masonry{columns:2;}}
+.photo-item{break-inside:avoid;margin-bottom:8px;border-radius:7px;overflow:hidden;cursor:pointer;position:relative;}
+.photo-item img{display:block;width:100%;height:auto;border-radius:7px;}
+.photo-item:hover .photo-ov{background:rgba(26,74,46,0.5);}
+.photo-ov{position:absolute;inset:0;background:rgba(26,74,46,0);transition:background 0.2s;display:flex;align-items:flex-end;}
+.photo-cap{color:#fff;font-size:11px;padding:20px 8px 7px;opacity:0;transition:opacity 0.2s;background:linear-gradient(transparent,rgba(0,0,0,0.55));width:100%;font-family:var(--font);}
+.photo-item:hover .photo-cap{opacity:1;}
+.card-foot{display:flex;justify-content:space-between;padding:11px 32px;background:var(--paper);border-top:0.5px solid var(--border);font-size:12px;color:var(--muted);}
+/* ── Map Modal ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:500;align-items:center;justify-content:center;padding:16px;}
+.modal-bg.open{display:flex;}
+.modal-box{background:#fff;border-radius:14px;width:100%;max-width:360px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.35);}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--green);}
+.modal-head-title{color:#fff;font-size:14px;letter-spacing:2px;font-family:var(--font);}
+.modal-close{background:none;border:none;color:rgba(255,255,255,0.8);font-size:22px;cursor:pointer;}
+.modal-map-wrap{padding:16px 16px 20px;background:var(--green-light);display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;}
+.modal-hint{font-size:12px;color:var(--muted);font-family:var(--font);letter-spacing:0.5px;}
+.cdot{cursor:pointer;}
+.cdot .dot{transition:r 0.15s;}
+.cdot:hover .dot{r:7px;}
+#map-submenu{display:none;position:absolute;background:#fff;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,0.22);padding:5px 0;z-index:10;min-width:130px;}
+#map-submenu.open{display:block;}
+.submenu-item{padding:9px 18px;font-size:13px;cursor:pointer;font-family:var(--font);color:var(--green);white-space:nowrap;}
+.submenu-item:hover{background:var(--green-light);}
+/* ── Floating Map Button ── */
+#float-map{position:fixed;bottom:28px;right:24px;z-index:490;width:56px;height:56px;border-radius:50%;background:#7A9CAE;border:2px solid #5f8399;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.22);display:flex;align-items:center;justify-content:center;padding:0;transition:transform 0.15s,box-shadow 0.15s;}
+#float-map:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(0,0,0,0.35);}
+#float-map svg{border-radius:50%;overflow:hidden;}
+/* ── Lightbox ── */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:999;align-items:center;justify-content:center;flex-direction:column;}
+.lb.open{display:flex;}
+.lb-close{position:absolute;top:16px;right:20px;color:#fff;font-size:26px;cursor:pointer;background:none;border:none;}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;cursor:pointer;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:26px;}
+.lb-prev{left:14px;}.lb-next{right:14px;}
+.lb-img-wrap{text-align:center;padding:0 60px;}
+.lb-img-wrap img{max-width:calc(100vw - 140px);max-height:92vh;border-radius:8px;display:block;margin:0 auto;}
+.lb-cap{color:rgba(255,255,255,0.65);font-size:13px;margin-top:12px;font-family:var(--font);text-align:center;}
+@media(max-width:600px){
+  .spot-head{flex-wrap:wrap;padding:20px 18px 16px;}
+  .map-thumb{margin-left:0;margin-top:14px;}
+  details.acc-item > summary,.acc-body,.photo-wrap,.card-foot{padding-left:16px;padding-right:16px;}
+  details.acc-item > summary{font-size:14px;}
+  .spot-title{font-size:24px;}
+  .acc-body p{font-size:17px;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ SITE HEADER ══ -->
+<div class="site-header">
+  <div class="header-flag">🇮🇹</div>
+  <div class="site-title">義大利 · <em>深情十五天</em></div>
+  <div class="site-sub">ITALY · DEEPLY IN LOVE · 2026.05.09 – 05.23</div>
+</div>
+
+
+<!-- ══ SPOT: MATERA ══ -->
+<div class="spot-section" id="spot-matera">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 2 · 5/10</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">馬特拉</div>
+      <div class="spot-en">Matera · Basilicata</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t0-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t0-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="161" cy="172" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="161" cy="172" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>馬特拉是地球上人類持續定居時間最長的城市之一，其歷史可上溯至<b>舊石器時代晚期</b>，距今約九千年前便有人類在此峽谷間棲居繁衍。這片喀斯特地形天然形成的岩穴，成為早期人類躲避猛獸與惡劣氣候的避難所，考古學家在此發掘出從石器時代延續至青銅器時代的完整文化層，足見馬特拉在人類文明史上的獨特地位。</p><p>到了<b>西元前3世紀</b>，羅馬人將此地納入版圖，開始系統性地開鑿與擴展洞穴，逐步形成有組織的穴居聚落。其後拜占庭帝國統治期間，大批來自東方的修士為逃避宗教迫害遷入馬特拉，將天然洞穴改建為隱修教堂，在岩壁上留下精美的聖像壁畫，使馬特拉成為南義大利重要的宗教文化中心。</p><p>近代的馬特拉卻經歷了一段悲劇。<b>1952年</b>，義大利政府強制遷移約一萬五千名世代居住於沙西石屋的居民，馬特拉因此被義大利作家卡洛·萊維在名著《基督止步於埃博利》中稱為<em>「義大利的羞恥」</em>，空城長達數十年。命運的轉折發生在<b>1993年</b>，UNESCO 將其列入世界文化遺產，2019年馬特拉更獲選為<b>歐洲文化之都</b>，正式宣告重生。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>馬特拉的文化底蘊，是一部由希臘、羅馬、拜占庭、諾曼與阿拉貢文明層疊書寫的史詩。峽谷（Gravina）兩岸至今仍保存著逾<b>150座岩鑿教堂</b>，壁畫保存極為完整，色彩鮮明如昔，令人屏息。</p><p>馬特拉在電影史上亦占有一席之地。<b>梅爾·吉勃遜</b>執導的《受難記》（2004年）將此地選為耶路撒冷的拍攝場景；詹姆士·龐德系列《生死交戰》（2020年）的開場追車戲亦在此取景，讓馬特拉的迷宮街道驚艷全球影迷。</p><p>每年<b>7月2日</b>的「卡羅薩節」是年度最盛大的宗教慶典，信徒爭相拆解遊行彩車以取得「聖物碎片」，這項延續七百年的傳統至今從未間斷。沙西居民世代共享同一水槽（Cisterna）收集雨水，設計精巧的地下蓄水系統是古代水利工程的傑作，也是<em>集體共生精神</em>的最佳體現。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>馬特拉的建築奇景，在於其完全順應自然地形而生長的有機形態。沙西石屋分為兩大區域：北側的<b>Sasso Barisano</b>面向城市主廣場，建築外立面相對工整；南側的<b>Sasso Caveoso</b>則更為原始粗獷，保存了更多未經修飾的洞穴原貌。</p><p>整個聚落的空間邏輯令建築師嘆為觀止——<b>上一層住宅的屋頂，往往就是下一層鄰居的庭院或街道</b>。垂直方向上可能疊壓了五到六個生活層次，卻毫無混亂之感，形成一套高效運作的立體迷宮。</p><p>建築主體材料為當地出產的<b>石灰華（Calcarenite）</b>，其色澤隨日照角度呈現戲劇性變化：正午陽光下如蜂蜜般金黃溫潤，黎明與黃昏則漸次轉為深橙、玫瑰乃至月光銀白。洞穴內部因石材的熱惰性，<em>全年室溫恆定於攝氏14至16度</em>，是天然的冷暖調節系統。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-matera"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Basilicata · 2026.05.10</span>
+    <span id="cnt-matera"></span>
+  </div>
+</div>
+<!-- ══ SPOT: ALBEROBELLO ══ -->
+<div class="spot-section" id="spot-alberobello">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 3 · 5/11</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">阿貝羅貝羅</div>
+      <div class="spot-en">Alberobello · Puglia</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t1-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t1-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="171" cy="163" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="171" cy="163" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>阿貝羅貝羅坐落於義大利南部普利亞大區（Puglia）的穆爾吉亞高原，小鎮以數以千計的<b>圓錐形石屋 Trullo</b>（複數 Trulli）聞名於世，其建造歷史可追溯至<b>14世紀</b>。當時這片土地隸屬於那不勒斯王國的阿奎維瓦（Acquaviva）伯爵家族，領主為了規避王室稅收，嚴禁農民興建永久性建築，於是居民發展出一種獨特的「乾砌」技術——完全不使用灰漿，僅以石灰岩薄板層層疊砌成錐形頂蓋，一旦稅務官來巡察，只需抽掉一塊關鍵石板，整座屋頂便可瞬間崩塌，以「廢墟」應付官員核查。</p><p>這項因應稅制的建築智慧延續了數百年，直至<b>1797年</b>，波旁王朝治下的費迪南多四世才正式批准鎮民興建永久屋舍，然而居民對 Trulli 的偏愛已根深蒂固，傳統建築形式就此完整保留下來。<b>1996年</b>，阿貝羅貝羅以其獨一無二的 Trulli 聚落被列入<b>UNESCO 世界文化遺產</b>，成為義大利最小卻最具辨識度的遺產城鎮之一。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>Trulli 不僅是一種建築形式，更是普利亞農民世代相傳的<em>生存智慧與文化認同</em>的具體體現。每座 Trullo 頂端通常會以石灰白描繪各式符號——有基督教十字架、異教崇拜的太陽紋、古代巫術符咒，乃至農民家族的識別標誌，形成一套在地的圖像語彙。學者至今對這些符號的確切意涵仍眾說紛紜，為 Trulli 增添了幾分神秘色彩。</p><p>小鎮最密集的 Trulli 聚落分布於兩個山丘區：<b>Rione Monti</b>（擁有逾1,000座 Trulli）和 <b>Rione Aia Piccola</b>（保有較多原住民居所）。值得注意的是，鎮中許多 Trulli 至今仍有人居住或作為商舖、民宿使用，是<em>活生生的文化遺產</em>，而非博物館式的保存展示。</p><p>每年<b>8月</b>舉辦的「Trulli 節」吸引來自世界各地的訪客，以傳統服飾遊行、手工藝展示與地方美食慶典，重現普利亞的農村生活記憶，延續這份跨越六個世紀的文化傳承。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>Trullo 的建造工法是義大利建築史上最罕見的「乾砌技術」（Dry-stone construction）極致之作。工匠完全不借助灰漿或黏著劑，僅靠石灰岩薄板的<b>重力平衡與精準咬合</b>，砌出直徑約6至7公尺、高度可達數層的圓錐頂蓋，其結構穩定性令現代工程師嘆服。</p><p>屋頂由外而內分為三層：最外層是以石板層疊排列形成的<b>「魚鱗式」防水表面</b>；中間為填充碎石的隔熱層；最內層則是穹頂般的石砌內壁，形成冬暖夏涼的天然調溫空間。</p><p>圓錐頂端多以獨特的<b>「頂石」（Pinnacolo）</b>收尾，形狀因家族或地區而異，有球形、十字形、圓盤形等多種變體，是識別各家 Trullo 的重要標誌。牆面一律以石灰漿粉刷成<em>雪白色</em>，在普利亞明媚的陽光下，與灰藍色石板屋頂形成強烈對比，構成旅人心中最難忘的義大利南方印象。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-alberobello"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Puglia · 2026.05.11</span>
+    <span id="cnt-alberobello"></span>
+  </div>
+</div>
+<!-- ══ SPOT: CAPRI_ISLAND_GROTTA AZZURRA ══ -->
+<div class="spot-section" id="spot-grotto">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 4 · 5/12</span>
+      </div>
+      <div class="spot-title">藍洞</div>
+      <div class="spot-en">Grotta Azzurra · Capri</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t2-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t2-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  <ellipse cx="126" cy="175" rx="4" ry="2" fill="#d8efd8" stroke="#1a4a2e" stroke-width="0.6" opacity="0.8"/>
+  <circle cx="126" cy="172" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="126" cy="172" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>藍洞（Grotta Azzurra）位於卡普里島（Capri）西北岸，是一座令全世界嘆為觀止的海蝕溶洞。早在<b>羅馬帝國時代</b>，皇帝提比略（Tiberius）便在卡普里島興建夏宮，藍洞一帶被闢為皇帝的私人浴場，古羅馬人在洞壁刻下神靈雕像，將其視為神聖之地。其後千餘年間，當地漁民流傳著洞中住有妖靈的禁忌傳說，使藍洞長期湮沒於世人記憶之外。</p><p>命運的轉折發生在<b>1826年</b>，德國詩人奧古斯特·科皮許（August Kopisch）與友人在老漁夫帶領下，鑽過僅高約1.2公尺的洞口游入洞中，驚見滿洞翻湧的電光藍色海水，隨即將此奇景公諸於世。消息傳出後，歐洲旅遊界大為轟動，藍洞就此成為義大利最具代表性的自然奇觀之一。</p><p>考古學家後來在洞中發現了羅馬時代的<b>雕像底座與大理石碎片</b>，印證了提比略宮廷時代的使用記錄，這些水下遺址如今已劃入文化保護範圍。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>藍洞是卡普里島靈魂的縮影，也是義大利旅遊文化最具詩意的象徵之一。<b>19世紀浪漫主義</b>文學盛行期間，歌德、拜倫等文人騷客皆曾慕名造訪卡普里島，藍洞的神秘光影成為他們筆下一再出現的意象，使這座小島以「詩人之島」名聞歐洲。</p><p>德皇威廉二世、英國作家D.H.勞倫斯等名流先後在此留下足跡。每年湧入藍洞的訪客超過<b>百萬人次</b>，卻因洞口狹小與波浪的限制，每趟小艇僅能搭乘4人，進出時必須躺臥艇底。這種刻意保留的「儀式感」，讓每一位進入藍洞的旅人，都彷彿正在完成一次與大自然的私密約定，令人終生難忘。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>自然奇景</summary>
+    <div class="acc-body"><p>藍洞的藍並非來自天空，而是源自海水對光線的獨特折射。洞口水面下約<b>1.2公尺</b>處，有一個面積約2×0.8公尺的水下裂縫，是陽光進入洞穴的唯一通道。陽光穿透這道水下裂縫時，先被濾去紅色波段，再折射至洞頂後散射開來，使整個洞內水面呈現出令人難以置信的<em>電光藍白色</em>，彷彿整座洞穴從內部發光一般。</p><p>最佳觀賞時機為上午<b>10點至正午</b>，此時陽光角度最理想，藍光最為璀璨。洞穴內部約60公尺深、25公尺寬、15公尺高，船伕會高唱拿坡里民謠，歌聲在石壁間迴盪。入場受波浪影響極大，若逢風浪較大洞口即關閉，<em>能入洞一訪本身便是一種幸運</em>。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-grotto"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Capri, Campania · 2026.05.12</span>
+    <span id="cnt-grotto"></span>
+  </div>
+</div>
+<!-- ══ SPOT: SORRENTO_POSITANO ══ -->
+<div class="spot-section" id="spot-sorrento_positano">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 4 · 5/12</span>
+      </div>
+      <div class="spot-title">蘇連多／波西塔諾</div>
+      <div class="spot-en">Sorrento / Positano · Campania</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t3-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t3-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="130" cy="170" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="130" cy="170" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>蘇連多自<b>古希臘羅馬時期</b>便是地中海航運的重要港口，當時稱為<b>Surrentum</b>，羅馬貴族喜愛在此修建別墅，欣賞那不勒斯灣的壯麗海景。中世紀以後，蘇連多因地勢易守難攻，先後受拜占庭、諾曼與阿拉貢王朝統治，逐漸發展成獨立的海港城鎮，以柳橙、檸檬果園與木工藝聞名於世。</p><p>波西塔諾的崛起則與<b>阿馬菲海岸（Amalfi Coast）</b>的歷史密不可分。在中世紀，這裡曾是阿馬菲海洋共和國的重要港埠之一，村落沿著陡峭山壁層層疊建，房舍如階梯般向海面傾瀉而下。十九世紀至二十世紀初，由於漁業與航運逐漸沒落，許多居民被迫移民海外，村落一度蕭條。</p><p>真正的轉折發生在<b>1950年代</b>，作家<b>約翰·史坦貝克</b>造訪波西塔諾後，將其譽為<em>「夢境般的地方，看著它,你幾乎不敢相信它是真實的」</em>，這篇文章發表後吸引大批歐美名流與藝術家前來，波西塔諾自此從沒落漁村蛻變為享譽國際的度假勝地，蘇連多半島也跟著躍升為義大利南部最具代表性的觀光門戶。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>蘇連多與波西塔諾所代表的，是一種<em>「慢活的地中海生活哲學」</em>。這裡的居民世代以海洋、檸檬園與手工藝為生，蘇連多特產的<b>檸檬甜酒（Limoncello）</b>正是源自當地家庭代代相傳的祕方，金黃澄亮的酒液與檸檬香氣，已成為整個阿馬菲海岸的文化象徵。</p><p>蘇連多同時也是音樂史上重要的一頁——著名的拿坡里民謠《Torna a Surriento》（重返蘇連多）創作於此，曲調悠揚懷舊，傳唱百年而不衰，道盡了異鄉遊子對這片海岸的思念之情。</p><p>波西塔諾則因其陡峭地形孕育出獨特的<b>「波西塔諾風」（Moda Positano）</b>時尚——寬鬆飄逸的亞麻服飾與鮮豔印花，源自當地裁縫師為適應炎熱氣候與山路行走而設計，後來風靡好萊塢明星，成為義大利南部度假風格的代名詞。每年夏季，村落裡的小巷弄擠滿手工藝品店與露天咖啡座,空氣中瀰漫著海鹽與柑橘交織的<em>悠閒氣息</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>風光特色</summary>
+    <div class="acc-body"><p>波西塔諾最令人屏息的景致，莫過於從山頂俯瞰整座村落——色彩繽紛的房舍以<b>檸檬黃、珊瑚粉、赭紅與天藍</b>層層堆疊在陡峭山壁上，一路延伸至蔚藍海岸線，宛如打翻了的調色盤，被譽為<em>「垂直的花園城市」</em>。村中地標<b>聖母升天教堂（Chiesa di Santa Maria Assunta）</b>那座以彩色釉瓦鋪成的圓頂，在陽光下閃耀著綠、黃、藍三色光澤，是整座小鎮最具標誌性的畫面。</p><p>蘇連多則坐擁一片向海突出的<b>懸崖台地</b>，城鎮邊緣即是垂直而下的峭壁，站在塔索廣場（Piazza Tasso）旁的觀景台，可以將那不勒斯灣與遠方的維蘇威火山盡收眼底。蜿蜒的小徑通往下方的小型港灣<b>Marina Grande</b>，色彩鮮豔的漁船與石砌小屋構成一幅悠然的漁村畫面。</p><p>無論是搭船沿著阿馬菲海岸線航行，或是漫步於高低錯落的階梯巷弄，眼前所見皆是<em>懸崖、海洋與檸檬園交織而成的夢幻畫卷</em>——金黃陽光灑落在湛藍海面，點點白色帆影點綴其間,這正是義大利南部最令人魂縈夢繫的風光。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-sorrento_positano"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Campania · 2026.05.12</span>
+    <span id="cnt-sorrento_positano"></span>
+  </div>
+</div>
+<!-- ══ SPOT: POMPEII ══ -->
+<div class="spot-section" id="spot-pompeii">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 5 · 5/13</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">龐貝</div>
+      <div class="spot-en">Pompeii · Campania</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t4-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t4-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="129" cy="167" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="129" cy="167" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>龐貝古城建立於<b>西元前7世紀</b>，最初由奧斯坎人（Oscan）所建，後歷經希臘、伊特魯里亞與薩姆奈人的統治，最終於<b>西元前80年</b>成為羅馬共和國的殖民地。憑藉著鄰近那不勒斯灣的優越地理位置與肥沃的火山土壤，龐貝迅速發展成繁榮的商業港市與貴族度假勝地,城內人口一度達到一萬一千人左右。</p><p>命運的轉折發生在<b>西元79年8月24日</b>，沉睡近八百年的<b>維蘇威火山（Vesuvio）</b>無預警噴發，火山灰、浮石與毒氣在短短數小時內掩埋了整座城市。當時的羅馬學者<b>小普林尼</b>在書信中記錄了這場災難的全過程，其舅父老普林尼更因親赴現場救援而罹難，這份第一手記載成為後世研究火山噴發的珍貴史料。</p><p>龐貝就此沉睡了近<b>1700年</b>，直到<b>1748年</b>才在波旁王朝的主持下展開系統性挖掘。出乎意料的是，覆蓋全城的火山灰反而成為最完美的<em>「時間膠囊」</em>，將西元一世紀羅馬人的日常生活完整封存下來，讓龐貝成為考古學史上最重要的發現之一。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>龐貝之所以震撼世人，在於它讓<em>「凝固的瞬間」</em>跨越近兩千年依然清晰可辨。考古學家利用石膏灌注技術，重現了遇難者臨終前的姿態——有的相擁而泣，有的蜷縮護子，這些<b>人體鑄模</b>讓參觀者得以直視古羅馬人在末日來臨時最真實的人性面貌，是極具衝擊力的歷史見證。</p><p>城內牆面保存了大量精美的<b>壁畫與馬賽克</b>，題材涵蓋神話故事、日常生活與情色圖像，生動呈現了羅馬上流社會的審美品味與生活樣貌。街道上的車轍痕跡、麵包店裡碳化的麵包、酒館牆上的塗鴉廣告，皆讓現代人得以一窺<b>古羅馬市民生活的細節</b>，其完整程度在古代遺址中無與倫比。</p><p><b>1997年</b>龐貝、艾爾科拉諾與托雷安農齊亞塔考古區被聯合國教科文組織列為<b>世界文化遺產</b>，認定其為研究古羅馬城市規劃、建築工程與社會結構的無價範本。如今每年吸引數百萬遊客造訪，也讓世人持續反思<em>自然力量與人類文明的脆弱對比</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>龐貝完整保留了古羅馬城市規劃的典範格局——以南北向<b>「Cardo」</b>與東西向<b>「Decumanus」</b>兩條主幹道交織成棋盤式街區，城市中心的<b>論壇廣場（Forum）</b>周圍環繞著神廟、市政廳與商業會堂，呈現出井然有序的公共生活空間。</p><p>城內的<b>圓形劇場（Anfiteatro）</b>是現存最古老的羅馬石造競技場之一，可容納兩萬名觀眾觀看角鬥表演;而保存完好的<b>大劇院與小劇院</b>則展現了羅馬人對戲劇與音樂的熱愛。富裕人家的宅邸如<b>「農牧神之家」（Casa del Fauno）</b>與<b>「神秘別墅」（Villa dei Misteri）</b>，內部設有中庭花園、噴泉與彩繪迴廊，牆面以鮮豔的<b>「龐貝紅」</b>為底色,繪製出栩栩如生的人物與風景壁畫。</p><p>更令人驚嘆的是城市的<b>基礎設施</b>——鉛製水管系統將水引入公共噴泉與私人宅邸，街道兩側設有人行道與墊高的<em>「跳石」</em>供行人跨越積水,車輪碾壓出的深深溝痕至今仍清晰可見,展現出兩千年前羅馬工程技術的驚人水準。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-pompeii"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Campania · 2026.05.13</span>
+    <span id="cnt-pompeii"></span>
+  </div>
+</div>
+<!-- ══ SPOT: ROMA_FONTANA DI TREVI_FONTANA DEI QUATTRO FIUMI ══ -->
+<div class="spot-section" id="spot-roma_fontana_di_trevi_fontana_dei_quattro_fiumi">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 5 · 5/13</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">許願池・四河噴泉</div>
+      <div class="spot-en">Fontana di Trevi / Fontana dei Quattro Fiumi · Roma</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t5-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t5-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="99" cy="139" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="99" cy="139" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>許願池的水源可追溯至<b>西元前19年</b>由阿格里帕（Agrippa）所建的<b>處女水道（Aqua Virgo）</b>，相傳一位少女為羅馬士兵指引泉源，因而得名。這條水道歷經兩千年仍持續供水，是羅馬現存最古老的水道系統之一,也奠定了此處作為城市供水終點的重要地位。</p><p><b>1732年</b>，教宗克萊孟十二世委託建築師<b>尼可拉·薩爾維（Nicola Salvi）</b>設計重建這座水道終點噴泉,工程歷時三十年，直到<b>1762年</b>才由其後繼者完成，成為今日所見的巴洛克巨作——許願池（Fontana di Trevi）。</p><p>四河噴泉則位於<b>納沃納廣場（Piazza Navona）</b>，由教宗英諾森十世於<b>1651年</b>委託巴洛克大師<b>濟安·羅倫佐·貝尼尼（Bernini）</b>設計建造，象徵當時已知世界四大洲的四條主要河流——多瑙河、恆河、尼羅河與普拉特河，是貝尼尼晚期最具代表性的噴泉傑作之一。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>許願池的<em>「投幣許願」</em>習俗源自古老的祈福傳統，相傳<b>背對噴泉、以右手經左肩拋出一枚硬幣</b>，便能許下重返羅馬的願望;若拋出第二枚硬幣則代表將遇見真愛，第三枚象徵婚姻美滿。每年遊客投入池中的硬幣高達上百萬歐元,這些善款全數捐贈給羅馬市的慈善機構,用於協助弱勢家庭採購生活物資。</p><p>這座噴泉也因經典電影而享譽全球——<b>1960年</b>費里尼的《甜蜜生活》中女主角在池中嬉戲的畫面，以及更早期奧黛麗赫本主演的《羅馬假期》,皆讓許願池成為<em>「羅馬浪漫」</em>的代名詞，吸引無數情侶與旅人前來朝聖。</p><p>四河噴泉所在的納沃納廣場，自古羅馬時代便是<b>圖密善競技場（Stadium of Domitian）</b>的所在地，至今廣場仍保留橢圓形跑道的輪廓。文藝復興與巴洛克時期,這裡逐漸發展為羅馬市民日常聚會、市集與街頭藝術表演的核心場所,至今依然是羅馬最具人文氣息的廣場之一。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>藝術特色</summary>
+    <div class="acc-body"><p>許願池高約26公尺、寬近50公尺，是羅馬城內<b>規模最大的巴洛克噴泉</b>。中央雕像為駕馭雙馬戰車的<b>海神尼普頓（Oceanus）</b>，兩側分別由代表<em>「豐饒」與「健康」</em>的女神雕像陪襯，整體背景倚靠著波利宮（Palazzo Poli）的立面，雕像群彷彿從建築中傾瀉而出，氣勢磅礴。海神座下方雕刻著奔騰的駿馬與海怪，搭配層疊的天然岩石造型基座，營造出<em>「水從岩縫中自然湧出」</em>的劇場式視覺效果，是巴洛克藝術<b>強調動態與戲劇張力</b>的極致展現。</p><p>四河噴泉同樣以<em>戲劇性的動感雕塑</em>聞名——貝尼尼將四位河神巨像分坐於人造岩礁四角，姿態各異，象徵不同大陸的地理特徵：尼羅河神以布遮面象徵當時尚未尋獲源頭、恆河神持槳象徵航運之利。</p><p>噴泉中央矗立著一座<b>古埃及方尖碑</b>，由貝尼尼巧妙地架設於鏤空岩礁之上，營造出方尖碑彷彿懸空漂浮的錯覺，這項大膽的結構設計在當時引起極大轟動，也成為巴洛克雕塑<b>結合建築、雕刻與水景</b>的經典範例。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-roma_fontana_di_trevi_fontana_dei_quattro_fiumi"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Roma · 2026.05.13</span>
+    <span id="cnt-roma_fontana_di_trevi_fontana_dei_quattro_fiumi"></span>
+  </div>
+</div>
+<!-- ══ SPOT: ROMA_PANTHEON ══ -->
+<div class="spot-section" id="spot-roma_pantheon">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 5 · 5/13</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">萬神殿</div>
+      <div class="spot-en">Pantheon · Roma</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t6-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t6-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="99" cy="139" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="99" cy="139" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>萬神殿最初由<b>阿格里帕（Agrippa）</b>於<b>西元前27年</b>建造，作為奉獻給羅馬眾神的廟宇，當時的建築在火災中損毀。現存的建築是由皇帝<b>哈德良（Hadrian）</b>於<b>西元118至128年間</b>下令重建，雖然外觀仍保留阿格里帕的銘文，但整體結構已是全新設計，展現了羅馬帝國鼎盛時期的工程實力。</p><p>西元<b>609年</b>，拜占庭皇帝福卡斯將萬神殿贈予教宗博義四世，並改奉為<b>聖母與諸殉道者教堂（Santa Maria ad Martyres）</b>，這項轉變成為它得以保存至今的關鍵——成為基督教堂後，萬神殿躲過了中世紀許多古羅馬建築被拆解作建材的命運。</p><p>文藝復興時期，萬神殿成為藝術家心中的聖地，畫家<b>拉斐爾</b>逝世後便依其遺願安葬於此。義大利統一後，這裡也成為<b>義大利國王陵墓</b>所在地，安葬了維托里奧·埃馬努埃萊二世與翁貝托一世等君主，使萬神殿同時承載著古羅馬信仰、基督教傳承與近代義大利國族記憶<em>三重歷史脈絡</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>萬神殿之名「Pantheon」源自希臘文，意為<em>「獻給所有神祇的殿堂」</em>，反映了古羅馬<b>多神信仰</b>的宗教觀——將天上所有神明集於一殿供奉，象徵羅馬帝國包容並蓄的統治哲學與宇宙觀。穹頂中央的「眼洞」（Oculus）讓陽光、雨水甚至雪花得以直接灑落殿內,被視為<em>「天與地之間的連結」</em>，賦予空間強烈的宗教神聖感。</p><p>作為歐洲歷史上<b>持續使用時間最長的建築物</b>之一，萬神殿近兩千年來始終發揮著功能——從羅馬神廟到天主教堂，從藝術家陵墓到國王安息之所，它見證了義大利從古羅馬帝國、教皇國到近代統一國家的整個歷史進程,是<b>文明連續性</b>最具象的見證。</p><p>萬神殿對後世建築影響深遠，文藝復興大師<b>米開朗基羅</b>讚嘆其為<em>「天使的設計，而非人類的作品」</em>，其穹頂結構更直接啟發了佛羅倫斯聖母百花大教堂、巴黎萬神殿乃至美國國會大廈等無數後世建築的設計理念。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>萬神殿最令人驚嘆之處在於其<b>穹頂（Dome）</b>——直徑達<b>43.3公尺</b>，至今仍是世界上現存最大的<em>無鋼筋混凝土穹頂</em>，這項紀錄保持了近兩千年。穹頂內部的高度與直徑完全相等，恰好可容納一個完美的球體，展現出古羅馬人對幾何比例近乎苛求的精準掌控。</p><p>為減輕穹頂重量，建造者運用了極為巧妙的工程技法：穹頂底部使用厚重的<b>火山岩混凝土</b>，越往頂端材料逐漸轉換為較輕的<b>浮石混凝土</b>，並在內側設計出五層、每層28個的凹格（coffers）,既減輕結構負荷,又營造出層層遞進的視覺韻律。穹頂正中央留有一個直徑<b>8.2公尺的「眼洞」（Oculus）</b>，是整座建築唯一的採光來源，也是結構應力的巧妙釋放點。</p><p>建築正面由<b>16根整塊埃及花崗岩柱</b>構成的科林斯式門廊，每根柱子重達約60噸，皆是從埃及採石場開鑿後,經由尼羅河、地中海運抵羅馬，展現了羅馬帝國<em>跨地域調動資源的驚人能力</em>，門廊上方的三角形山牆與殿身的圓形主體形成簡潔而震撼的幾何對比。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-roma_pantheon"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Roma · 2026.05.13</span>
+    <span id="cnt-roma_pantheon"></span>
+  </div>
+</div>
+<!-- ══ SPOT: ROMA_PIAZZA DI SPAGNA ══ -->
+<div class="spot-section" id="spot-roma_piazza_di_spagna">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 5 · 5/13</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">西班牙廣場</div>
+      <div class="spot-en">Piazza di Spagna · Roma</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t7-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t7-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="99" cy="139" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="99" cy="139" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>西班牙廣場之名源於廣場旁的<b>西班牙駐教廷大使館</b>，該建築自<b>17世紀</b>起便設立於此，廣場因而得名。在此之前，這片區域屬於羅馬城北部的<b>平喬丘（Pincio）</b>山腳地帶，是文藝復興時期貴族興建別墅花園的熱門地段。</p><p>廣場上著名的<b>破船噴泉（Fontana della Barcaccia）</b>由教宗烏爾班八世於<b>1627年</b>委託巴洛克雕塑家<b>彼得羅·貝尼尼（Pietro Bernini，濟安·羅倫佐·貝尼尼之父）</b>建造，相傳設計靈感來自<b>1598年台伯河大氾濫</b>時，一艘小船被洪水沖到此處的真實事件。</p><p>廣場頂端的<b>「西班牙階梯」（Scalinata di Spagna）</b>則是<b>18世紀</b>的產物，於<b>1723至1726年</b>由建築師<b>法蘭切斯科·德·桑克提斯</b>設計建成，目的是連接山下的西班牙廣場與山頂的<b>聖三一教堂（Trinità dei Monti）</b>，這座由法國出資興建的階梯,巧妙融合了義大利與法國的建築品味,自完工以來便成為羅馬最重要的城市地標之一。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>西班牙階梯自<b>19世紀</b>以來便是羅馬<em>文人雅士與藝術家匯聚之地</em>。階梯旁的房子曾是英國詩人<b>濟慈（John Keats）</b>人生最後居住的地方，他於1821年在此病逝，如今已改建為濟慈—雪萊紀念館，吸引無數文學愛好者前來追思。</p><p>這裡也是電影史上的經典場景——<b>1953年</b>奧黛麗·赫本與葛雷哥萊·畢克主演的《羅馬假期》中，女主角坐在階梯上吃義式冰淇淋的畫面深植人心,使西班牙階梯成為<em>「羅馬浪漫」</em>的代表符號之一，吸引全球影迷前來重現這一幕。</p><p>廣場周邊的<b>Via Condotti</b>大道自19世紀末便聚集了眾多頂級時尚精品店，是義大利<b>時尚產業</b>的發源地之一，至今仍是羅馬最頂級的購物街區。每年春季，階梯兩側更會擺滿盛開的杜鵙花盆栽,粉紅花海與古老石階相映,成為遊客爭相拍照的浪漫場景。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>風光特色</summary>
+    <div class="acc-body"><p>西班牙階梯共有<b>135級台階</b>，以不規則的弧形與平台層層堆疊而上，階梯本身呈現出優雅的<em>蝴蝶展翅般的曲線</em>，在不同樓層的平台上,遊客可以從各個角度俯瞰下方廣場與遠處的羅馬市景,光影隨著一天時間流轉,為石階染上溫暖的金黃或柔和的玫瑰色調。</p><p>階梯底部的<b>破船噴泉</b>造型低矮，宛如一艘半沉入水中的古船，與周圍熱鬧喧囂的廣場形成對比,噴泉池水平靜地映照著階梯與藍天，是攝影愛好者鏤刻光影層次的絕佳取景點。</p><p>登上階梯頂端，<b>聖三一教堂</b>那對哥德式雙鐘樓矗立眼前，從這裡回望，整座羅馬城的紅瓦屋頂如波浪般向四方延伸,遠處點綴著聖彼得大教堂的圓頂輪廓。傍晚時分,華燈初上,階梯上人們三五成群地席地而坐,談笑聲與街頭藝人的樂聲交織,構成一幅<em>充滿生命力的城市風情畫</em>。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-roma_piazza_di_spagna"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Roma · 2026.05.13</span>
+    <span id="cnt-roma_piazza_di_spagna"></span>
+  </div>
+</div>
+<!-- ══ SPOT: ROMA_COLOSSEO ══ -->
+<div class="spot-section" id="spot-roma_colosseo">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 6 · 5/14</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">競技場</div>
+      <div class="spot-en">Colosseo · Roma</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t8-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t8-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="99" cy="139" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="99" cy="139" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>競技場由<b>弗拉維王朝</b>皇帝<b>維斯帕先（Vespasian）</b>於<b>西元72年</b>下令興建，工程歷時八年，於其子<b>提圖斯（Titus）</b>在位的<b>西元80年</b>正式落成,落成典禮甚至連續舉辦了百日的角鬥與狩獵表演慶祝。其原名為<b>「弗拉維圓形劇場」（Amphitheatrum Flavium）</b>，現今的「Colosseo」之名則源於附近曾矗立的尼祿巨型雕像（Colossus）。</p><p>這座建築建於尼祿皇帝金宮（Domus Aurea）的人工湖址之上，象徵著<b>將皇帝私人領地歸還羅馬市民</b>的政治宣示，是弗拉維王朝鞏固民心的重要工程。在其後近四百年間，競技場持續舉辦角鬥士格鬥、模擬海戰與動物狩獵等大型表演，是古羅馬<b>公共娛樂的中心</b>。</p><p>西元<b>6世紀</b>後，競技場因地震、戰亂與材料盜用而逐漸荒廢，中世紀時甚至被改建為堡壘、住宅與宗教場所。<b>18世紀</b>教宗本篤十四世將其奉為<b>基督徒殉道聖地</b>並禁止繼續拆除，這才終止了長達千年的破壞,使其得以保存至今,<b>1980年</b>被列入<b>世界文化遺產</b>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>競技場是古羅馬<em>「麵包與競技」（Panem et Circenses）</em>統治策略的具體象徵——統治者透過提供免費娛樂來安撫民心、轉移政治壓力，反映了古羅馬社會獨特的<b>權力與群眾關係</b>。場內可容納約五萬至八萬名觀眾，座位依照<b>社會階級嚴格分區</b>，從皇帝專屬包廂到平民站席，是當時羅馬社會結構的縮影。</p><p>角鬥士（Gladiator）多由戰俘、奴隸或罪犯組成，但表現優異者也能贏得自由與名望，成為當時的<em>「明星」</em>，反映出羅馬社會對勇氣與娛樂的複雜矛盾態度。基督教徒在此殉教的歷史，也使競技場成為後世<b>信仰與犧牲精神</b>的重要象徵地。</p><p>作為現存最大的古羅馬建築遺跡，競技場深刻影響了後世體育場館的設計理念——現代足球場、體育館的<em>橢圓形觀眾席與多層出入口設計</em>，皆可追溯其源頭至此。它不僅是羅馬的城市象徵，更被視為<b>西方文明興衰</b>最具代表性的紀念碑，諺語甚至有云：「競技場不倒，羅馬不倒；羅馬不倒，世界不倒」。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>競技場呈巨大的<b>橢圓形</b>，長軸約189公尺、短軸156公尺，外牆高度達<b>48公尺</b>，相當於現代12層樓的高度,以當時的工程技術而言堪稱奇蹟。建築主體採用<b>石灰岩、混凝土與磚塊</b>分層構築,外牆設有三層拱廊，每層柱式依序為多立克、愛奧尼亞與科林斯式，由下而上逐漸輕巧,展現出古羅馬人對建築美學比例的精準掌握。</p><p>最令人驚嘆的是其<b>觀眾疏散系統</b>——80個拱形入口搭配精密的走道與樓梯網絡，據估計可讓數萬名觀眾在短短幾分鐘內全部入座或撤離，這項設計理念至今仍是現代體育場館規劃的基礎範本。</p><p>競技場地面下方暗藏著<b>「Hypogeum」</b>——一座結構複雜的地下層，內部設有通道、籠舍與升降機關，角鬥士與野獸可透過絞盤裝置直接「升降」至場中央，創造出戲劇性的登場效果。場地上方原本還可加裝<b>巨型遮陽帆布（Velarium）</b>，由專門徵召的水手操控繩索系統撐起，為觀眾遮蔭,展現出<em>令人讚嘆的古代工程智慧</em>。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-roma_colosseo"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Roma · 2026.05.14</span>
+    <span id="cnt-roma_colosseo"></span>
+  </div>
+</div>
+<!-- ══ SPOT: VATICANO ══ -->
+<div class="spot-section" id="spot-vaticano">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 6 · 5/14</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">梵蒂岡</div>
+      <div class="spot-en">Vaticano · Roma</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t9-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t9-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="96" cy="141" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="96" cy="141" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>梵蒂岡所在地原是<b>羅馬帝國時期的競技場與墓地</b>，相傳<b>聖彼得</b>於西元64年尼祿迫害基督徒時，在此地殉道並安葬。<b>西元4世紀</b>，君士坦丁大帝在其墓地上方興建第一座聖彼得大教堂，自此這片區域逐漸發展成天主教世界的信仰中心。</p><p>歷經千年演變，現今的<b>聖彼得大教堂</b>由教宗儒略二世於<b>1506年</b>下令重建，工程歷時超過一個世紀，集結了<b>布拉曼特、拉斐爾、米開朗基羅</b>與<b>貝尼尼</b>等文藝復興巨匠的設計心血，於<b>1626年</b>正式落成,成為當時世界上最大的教堂建築。</p><p><b>1929年</b>，教廷與義大利政府簽訂《拉特蘭條約》，正式確立<b>梵蒂岡城國</b>為獨立主權國家，面積僅0.44平方公里，是全球最小的國家,卻是全球十多億天主教徒心中<em>最神聖的信仰核心</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>宗教意義</summary>
+    <div class="acc-body"><p>梵蒂岡是<b>羅馬天主教會的最高權力中心</b>，教宗於此居住並履行其作為全球天主教會領袖的職責。聖彼得大教堂被視為基督教世界<em>最神聖的朝聖地之一</em>，每年吸引數百萬信徒與遊客前來,在聖彼得寶座前祈禱、瞻仰歷代教宗陵墓。</p><p>位於梵蒂岡宮殿群中的<b>西斯汀禮拜堂（Cappella Sistina）</b>，不僅是日常彌撒與重要宗教儀式的場所，更是<b>教宗選舉（祕密會議，Conclave）</b>的舉行地——當新教宗選出時，禮拜堂煙囪會釋放白煙，向全世界宣告<em>「我們有了新教宗」（Habemus Papam）</em>的歷史性時刻。</p><p>每逢復活節、聖誕節等重大節日，教宗會於<b>聖彼得廣場</b>向聚集的信徒發表祝福演說，廣場前方由貝尼尼設計的柱廊環抱成橢圓形,象徵著<em>「教會以雙臂擁抱全世界」</em>，這份包容性的宗教精神，正是梵蒂岡作為信仰中心最深刻的意義所在。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>藝術特色</summary>
+    <div class="acc-body"><p>聖彼得大教堂內部最震撼人心的莫過於<b>米開朗基羅</b>設計的巨大穹頂,高度達136公尺，登頂後可俯瞰整個羅馬城與聖彼得廣場全景。教堂入口處陳列著米開朗基羅24歲時完成的<b>《聖殤》（Pietà）</b>大理石雕像，描繪聖母懷抱耶穌遺體,衣紋細膩、神情哀戚，是文藝復興雕塑藝術的頂尖之作。</p><p><b>梵蒂岡博物館</b>收藏了跨越數千年的藝術珍寶,其中最令人屏息的當屬<b>西斯汀禮拜堂天頂壁畫</b>——米開朗基羅耗費四年獨自完成的《創世紀》系列，以及祭壇牆上震撼的《最後審判》，畫面中數百個人物姿態各異、肌肉線條栩栩如生,展現出<em>近乎神聖的藝術成就</em>。</p><p>廣場前的<b>貝尼尼柱廊</b>由284根多立克柱排列成四圈弧形，從特定角度望去柱子彷彿合而為一，是巴洛克透視藝術的經典範例。廣場中央矗立著一座源自埃及的<b>古代方尖碑</b>，與柱廊、教堂立面共同構成一幅<em>莊嚴肅穆又充滿藝術張力</em>的視覺畫面。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-vaticano"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Roma · 2026.05.14</span>
+    <span id="cnt-vaticano"></span>
+  </div>
+</div>
+<!-- ══ SPOT: BAGNOREGIO ══ -->
+<div class="spot-section" id="spot-bagnoregio">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 7 · 5/15</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">天空之城</div>
+      <div class="spot-en">Civita di Bagnoregio · Lazio</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t10-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t10-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="93" cy="121" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="93" cy="121" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>奇維塔·迪·巴尼奧雷焦的歷史可追溯至<b>兩千五百多年前的伊特魯里亞文明（Etruscan）</b>，當時的居民選擇在這座由火山凝灰岩構成的高台上建城,易守難攻的地形使其成為重要的戰略據點。羅馬時期，此地因位於連接羅馬與翁布里亞的古道上而持續繁榮。</p><p>然而這座城鎮的命運與其賴以建立的<b>軟質凝灰岩台地</b>緊密相連——周圍的山谷由於黏土層長期受雨水侵蝕，地基逐漸崩塌剝落，城鎮所在的台地面積持續縮小。<b>1695年</b>一場大地震更造成嚴重損毀，許多居民被迫遷往對岸新建的巴尼奧雷焦鎮居住,舊城逐漸人煙稀少。</p><p>正因如此，奇維塔被稱為<em>「正在死去的城市」（La Città che Muore）</em>——地質學家估計，若無人為干預,這座台地終將因侵蝕而完全消失。如今鎮上常住居民僅剩個位數,僅靠一座<b>長約300公尺的人行步橋</b>與外界相連,使其更添一份遺世獨立的<em>蒼涼詩意</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>「天空之城」之名的由來，正是因為這座小鎮孤懸於被深谷環繞的高台上，<em>每當山谷雲霧繚繞升起時，整座城鎮彷彿懸浮於雲海之中</em>，宛如宮崎駿動畫中的場景,因此被遊客暱稱為現實版的天空之城,吸引全球攝影愛好者特地前來捕捉這夢幻一瞬。</p><p>儘管常住人口稀少，奇維塔依然保留著濃厚的<b>義大利傳統節慶文化</b>——每年舉辦的<b>「驢子節」（Palio della Tonna）</b>延續中世紀傳統,鎮民身著古裝進行驢子競賽,展現出當地居民對抗時間侵蝕、堅守家鄉文化根脈的<em>頑強生命力</em>。</p><p>這座小鎮也成為<b>「保存與消逝」</b>議題的象徵——義大利政府與文化團體積極投入地質工程與文物保護，試圖延緩侵蝕速度,讓這座兩千五百年歷史的古城得以繼續存在。對遊客而言，造訪奇維塔不僅是賞景,更像是<em>與時間賽跑、見證一段正在消逝的歷史</em>的特殊體驗。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>奇維塔的入口建築<b>「聖瑪利亞城門」（Porta Santa Maria）</b>，是由<b>伊特魯里亞人</b>直接從凝灰岩壁中鑿刻而成的拱門,歷經兩千多年歲月，門洞表面已被無數行人腳步與車輪磨出光滑的凹陷痕跡，是整座古城最古老的見證者。</p><p>鎮內的街道與廣場保留著<b>中世紀的石板鋪面與石造建築</b>，狹窄蜿蜜的巷弄間，文藝復興時期的拱門、羅馬式教堂與民居錯落分佈,中央廣場上的<b>聖多納托教堂（Chiesa di San Donato）</b>內仍保存著珍貴的中世紀濕壁畫與木雕基督像。</p><p>最令人印象深刻的是整座城鎮<b>與地質景觀融為一體</b>的建築語彙——房舍的地基直接坐落於裸露的凝灰岩台地邊緣，部分建築甚至向外懸挑於峭壁之上,從遠處眺望,土黃色的岩壁與磚瓦屋頂幾乎難以區分,呈現出<em>「建築從岩石中生長出來」</em>的獨特視覺效果，這種與自然地形高度融合的聚落形態,在義大利乃至全世界都極為罕見。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-bagnoregio"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Lazio · 2026.05.15</span>
+    <span id="cnt-bagnoregio"></span>
+  </div>
+</div>
+<!-- ══ SPOT: SIENA ══ -->
+<div class="spot-section" id="spot-siena">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 7 · 5/15</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">西恩納</div>
+      <div class="spot-en">Siena · Toscana</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t11-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t11-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="82" cy="104" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="82" cy="104" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>西恩納最初由<b>伊特魯里亞人</b>建立，羅馬時期稱為「Saena Julia」。中世紀時期，西恩納憑藉著位於<b>法蘭奇傑納朝聖之路（Via Francigena）</b>上的優越位置,發展成繁榮的貿易與金融重鎮，其銀行業甚至早於佛羅倫斯,城內的<b>蒙特帕斯基銀行（Banca Monte dei Paschi）</b>創立於1472年,是世界上現存最古老的銀行。</p><p><b>1260年代至14世紀中葉</b>是西恩納的黃金時期，與佛羅倫斯長期爭奪托斯卡納地區的霸權，城內藝術、建築與商業均達到鼎盛，誕生了以<b>杜契奧（Duccio）</b>為首的<b>西恩納畫派</b>，在哥德式繪畫史上占有重要地位。</p><p>然而<b>1348年</b>，黑死病肆虐西恩納，奪走城內近三分之二的人口，城市發展自此停滯。其後西恩納於<b>1555年</b>被佛羅倫斯的麥地奇家族征服，喪失獨立地位。諷刺的是，正因這段「凍結的歷史」，西恩納的中世紀城市風貌得以完整保留至今，<b>1995年</b>被列為<b>世界文化遺產</b>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>西恩納最具代表性的文化盛事是每年<b>7月2日與8月16日</b>舉辦的<b>「賽馬節」（Palio di Siena）</b>——這項源自中世紀的傳統賽事，由城內17個傳統行政區（Contrade）派出代表騎師,在主廣場上進行驚險刺激的無鞍裸馬競速,全城居民身著傳統服飾遊行慶祝,場面熱烈,是義大利保存最完整的<em>中世紀活態文化</em>之一。</p><p>西恩納人對<b>「Contrade」</b>（街區）的認同感極為深厚——每個街區擁有各自的徽章、顏色、教堂與守護聖人，居民從出生便歸屬於特定街區,終身以此為榮，這種強烈的<em>地域認同與集體歸屬感</em>，造就了西恩納獨特而緊密的社區文化。</p><p>作為<b>西恩納畫派</b>的發源地，這座城市在14世紀為歐洲藝術史貢獻了大量哥德式宗教繪畫珍品，杜契奧、馬丁尼等畫家的金底蛋彩畫，以其優雅的線條與細膩的人物表情著稱，與同時期佛羅倫斯畫派的寫實風格分庭抗禮,共同構成了義大利早期文藝復興藝術的重要源流。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>城市核心<b>田野廣場（Piazza del Campo）</b>呈獨特的<em>扇形</em>，地面以九條放射狀紅磚分割線鋪成,象徵當年統治西恩納的「九人政府」。廣場周圍環繞著中世紀宮殿建築,整體向中心微微傾斜的設計,既有利於排水,也創造出宛如露天劇場般的<em>環抱式空間感</em>，是歐洲中世紀廣場設計的傑作。</p><p>廣場上高聳的<b>曼吉亞塔（Torre del Mangia）</b>塔樓高達102公尺，與相鄰的市政廳（Palazzo Pubblico）共同構成西恩納的天際線標誌,登頂後可俯瞰整座古城紅瓦屋頂與遠方托斯卡納丘陵的壯麗景色。</p><p><b>西恩納主教座堂（Duomo di Siena）</b>是義大利哥德式建築的代表作之一，立面以白色、綠色與粉紅色大理石條紋裝飾,內部地板鋪滿56幅由不同藝術家繪製的<b>大理石鑲嵌畫</b>，題材涵蓋聖經故事與寓言,堪稱「世界上最美的地板」。教堂原本還計畫擴建成歐洲最大教堂,但因黑死病爆發而中止，留下的<b>未完成立面</b>（Facciatone）至今仍訴說著這段未竟的宏願。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-siena"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Toscana · 2026.05.15</span>
+    <span id="cnt-siena"></span>
+  </div>
+</div>
+<!-- ══ SPOT: TOSCANA ══ -->
+<div class="spot-section" id="spot-toscana">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 7 · 5/15</span>
+      </div>
+      <div class="spot-title">托斯卡納莊園</div>
+      <div class="spot-en">Borgo di Cortefreda · Toscana</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t12-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t12-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="85" cy="106" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="85" cy="106" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>莊園簡介</summary>
+    <div class="acc-body"><p><b>Borgo di Cortefreda</b>坐落於托斯卡納起伏的丘陵之間，是一座由古老農莊改建而成的<b>莊園型旅館（Agriturismo）</b>。這類莊園多由數百年歷史的石造農舍與穀倉群構成,過去曾是當地貴族或地主經營葡萄園、橄欖園與農牧業的核心建築,如今經過細心修復改建,在保留原始石牆、木樑與紅瓦屋頂的基礎上，注入現代化的住宿設施與服務,成為遊客深入體驗托斯卡納田園生活的理想落腳處。</p><p>莊園周圍通常環繞著<b>整片的葡萄園、橄欖樹林與向日葵田</b>，依著四季更迭呈現不同的色彩——春季嫩綠、夏季金黃、秋季則染上葡萄藤轉紅的暖調,構成一幅幅如畫的鄉村景致。莊園主人多數延續家族世代經營的<b>農業與釀酒傳統</b>，遊客入住期間,往往能近距離觀察到當地最真實的農村生活節奏。</p><p>這類莊園的選址多刻意避開喧囂的觀光主幹道，藏身於蜿蜿曲折的鄉間小路盡頭，因此造訪過程本身就像一場<em>尋訪秘境的小旅行</em>——車子駛過一片片橄欖樹林與石牆圍籬,直到莊園的輪廓在山丘頂端緩緩浮現,那一刻的驚喜與寧靜，正是托斯卡納莊園住宿最珍貴的初體驗。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>托斯卡納風情</summary>
+    <div class="acc-body"><p>托斯卡納向來被譽為<em>「義大利的心臟與靈魂」</em>，這片土地孕育了文藝復興的藝術巨匠,也孕育了世界知名的<b>奇揚地（Chianti）葡萄酒、托斯卡納橄欖油</b>與松露等美食物產。莊園周邊起伏的丘陵地形,點綴著一排排筆直的義大利柏樹（Cipressi）,沿著蜜黄色的碎石路蜻蜂延伸至遠方的石造農舍，是世界上最具代表性的鄉村畫面之一。</p><p>居住在莊園期間，最能體會到托斯卡納人特有的<em>「慢活」生活哲學（La Dolce Vita）</em>——清晨在薰衣草與迷迭香的香氣中醒來，午後在涼蔭下小憩,傍晚則伴著夕陽餘暉,在葡萄園邊享用一杯當地自釀的紅酒。這種與自然節奏同步的生活方式,正是托斯卡納最迷人的精神內核。</p><p>許多莊園也會提供<b>傳統托斯卡納料理</b>體驗,例如手工製作的Pici麵、佛羅倫斯丁骨牛排（Bistecca alla Fiorentina），搭配莊園自產的橄欖油與葡萄酒。餐桌上的每一道菜,往往都承載著當地家庭世代相傳的食譜與故事,讓旅人在品味美食的同時,也品味這片土地<em>數百年不變的人情溫度</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>住宿體驗</summary>
+    <div class="acc-body"><p>莊園客房多由<b>原本的農舍房間或穀倉空間</b>改建而成,室內保留厚實的石牆、裸露的木樑與磚砌拱頂,搭配現代化的衛浴設備與柔軟舒適的寢具,呈現出<em>「古樸外殼，舒適內裡」</em>的獨特住宿風格。窗外望去往往就是一望無際的葡萄園與遠山輪廓,推開窗戶,清新的鄉間空氣與蟲鳴鳥叫聲撲面而來。</p><p>許多莊園設有<b>戶外游泳池</b>，四周環繞著草坪與橄欖樹,是消暑放鬆、欣賞夕陽的絕佳去處。傍晚時分,泳池映照著橙紅色的天空與遠處山丘的輪廓,搭配一杯冰涼的白酒,構成托斯卡納度假最經典的<em>悠閒畫面</em>。</p><p>對於與長輩同行的旅人而言,這類莊園式住宿的最大優勢在於<b>節奏舒緩、空間寬敞</b>——不必匆忙趕路,可以在莊園的庭院、花園或公共起居空間中靜靜休息,享受托斯卡納特有的<em>寧靜時光</em>。夜晚遠離城市光害,滿天星斗點亮鄉間夜空,為旅程留下一段<em>格外深刻而難忘的休憩記憶</em>。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-toscana"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Toscana · 2026.05.15</span>
+    <span id="cnt-toscana"></span>
+  </div>
+</div>
+<!-- ══ SPOT: FIRENZE_GALLERIA DEGLI UFFIZI ══ -->
+<div class="spot-section" id="spot-firenze_galleria_degli_uffizi">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 8 · 5/16</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">佛羅倫斯・烏菲茲美術館</div>
+      <div class="spot-en">Firenze / Galleria degli Uffizi · Toscana</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t13-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t13-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="79" cy="93" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="79" cy="93" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>佛羅倫斯作為<b>文藝復興（Rinascimento）</b>的發源地，自<b>14世紀</b>起便在<b>麥地奇家族（Medici）</b>的統治與資助下，吸引無數藝術家、學者與工匠匯聚於此，開創出人類歷史上最燦爛的藝術黃金時代,但丁、達文西、米開朗基羅與波提且利等巨匠皆與這座城市有著深厚淵源。</p><p><b>烏菲茲美術館</b>的建築本身由<b>科西莫一世·德·麥地奇</b>於<b>1560年</b>委託建築師<b>瓦薩里（Giorgio Vasari）</b>興建，最初用途是作為<em>「Uffizi」（意為「辦公室」）</em>，集中容納佛羅倫斯共和國的十三個行政與司法機構,後來逐漸轉為麥地奇家族存放珍貴藝術收藏的空間。</p><p><b>1737年</b>，麥地奇家族最後一位繼承人<b>安娜·瑪麗亞·路易莎</b>立下著名的<em>「家族條約」（Patto di Famiglia）</em>，將麥地奇家族數百年累積的藝術收藏全數捐贈給托斯卡納政府,並明文規定<b>永不得移出佛羅倫斯</b>。烏菲茲於<b>1765年</b>正式對外開放,成為世界上最早的公共美術館之一。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>收藏亮點</summary>
+    <div class="acc-body"><p>烏菲茲美術館最著名的鎮館之寶，當屬<b>波提且利（Botticelli）</b>的兩幅巨作——<b>《維納斯的誕生》</b>與<b>《春》（Primavera）</b>。前者描繪維納斯誕生自海中貝殼的優雅瞬間,後者則以繁花盛開的花園為背景,匯聚多位神話人物,兩者皆是文藝復興早期最具代表性的世俗題材繪畫,展現出<em>跨越五百年依然鮮豔動人</em>的色彩魅力。</p><p>美術館同時收藏了<b>達文西</b>早期作品《天使報喜》與《三王朝拜》，以及<b>米開朗基羅</b>唯一一幅蛋彩板畫《聖家族》，畫面中人物姿態扭轉有力,色彩明亮鮮明,展現出與其雕塑作品同樣強烈的<em>立體張力</em>。</p><p>此外，<b>提香（Titian）</b>的《烏菲茲的維納斯》、<b>拉斐爾</b>的多幅肖像畫,以及卡拉瓦喬等巴洛克大師的作品也陳列其中，整座美術館依年代與畫派分區陳列,讓參觀者彷彿親身走過一部<em>濃縮的西方藝術發展史</em>，從中世紀的金底聖像畫,一路欣賞到文藝復興的人文光輝。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>烏菲茲美術館建築呈<b>「U」字形</b>，由兩排狹長的三層樓建築夾著一條筆直的內部廣場（Piazzale degli Uffizi）構成,一端面向<b>領主廣場（Piazza della Signoria）</b>，另一端則延伸至<b>阿諾河（Arno）</b>畔,整體設計融合了當時佛羅倫斯流行的<em>古典主義比例與和諧的立面節奏</em>，是瓦薩里建築風格的代表作。</p><p>建築群中最具巧思的部分，是連接領主宮（Palazzo Vecchio）與阿諾河對岸<b>碧提宮（Palazzo Pitti）</b>的<b>瓦薩里走廊（Corridoio Vasariano）</b>——這條架設於屋頂與建築之間的高架密道，全長約一公里,讓麥地奇家族成員能夠不經過街道，安全地往返宮殿與美術館之間，展現出16世紀建築設計中<em>權力與空間規劃緊密結合</em>的巧思。</p><p>美術館內部展廳依循傳統的<b>長廊式陳列</b>，天花板上保留著精緻的<b>濕壁畫裝飾</b>，與牆面懸掛的油畫相互映襯,光線經由側窗柔和地灑入展廳,營造出莊重而典雅的觀展氛圍,讓每一件藝術珍品都能在最適切的光影條件下,展現其原始的色彩與細節。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-firenze_galleria_degli_uffizi"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Toscana · 2026.05.16</span>
+    <span id="cnt-firenze_galleria_degli_uffizi"></span>
+  </div>
+</div>
+<!-- ══ SPOT: PISA ══ -->
+<div class="spot-section" id="spot-pisa">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 8 · 5/16</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">比薩</div>
+      <div class="spot-en">Pisa · Toscana</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t14-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t14-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="68" cy="94" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="68" cy="94" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>比薩在<b>11至13世紀</b>是地中海地區舉足輕重的<b>海洋共和國</b>，與威尼斯、熱那亞並列為義大利三大海上強權，憑藉強大的艦隊掌控地中海貿易航線，財富與軍事實力達到鼎盛。<b>1063年</b>，比薩在一場對抗西西里穆斯林艦隊的戰役中大獲全勝，為了感謝上帝庇佑並彰顯城邦榮耀，遂決定興建一座宏偉的主教座堂建築群。</p><p><b>比薩大教堂（Duomo）</b>於<b>1064年</b>動工，其後陸續增建洗禮堂與鐘樓（即比薩斜塔），整個工程歷時近兩百年才全部完工。然而比薩的黃金時代並未長久——<b>1284年</b>梅洛里亞海戰中比薩艦隊遭熱那亞重創，海上霸權自此一蹶不振，<b>1406年</b>更被佛羅倫斯共和國併吞,逐漸喪失政治獨立地位。</p><p>儘管失去了海權，比薩在學術領域卻持續發光——創立於<b>1343年</b>的<b>比薩大學</b>是義大利最古老的大學之一，<b>17世紀</b>科學家<b>伽利略</b>於此求學並任教,相傳他曾在斜塔進行<em>自由落體實驗</em>，為近代物理學奠定重要基礎，也讓比薩在科學史上留下不可磨滅的一頁。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>比薩斜塔早已超越單純的建築意義，成為<em>「義大利的代表符號」</em>之一——即使從未造訪過義大利的人,也大多認得這座傾斜的白色圓塔。每年數百萬遊客在塔前擺出<em>「伸手扶塔」</em>的逗趣拍照姿勢，這個充滿創意與幽默感的互動方式,讓比薩斜塔成為社群媒體上最常見的義大利景點畫面之一。</p><p>大教堂廣場（Piazza dei Miracoli，意為<em>「奇蹟廣場」</em>）匯聚了主教座堂、洗禮堂、鐘樓與墓園四座潔白建築，整體被翠綠草坪環繞，與周邊紅瓦城牆形成強烈的色彩對比,自<b>1987年</b>起被列為<b>世界文化遺產</b>，是中世紀宗教建築群規劃的典範。</p><p>比薩斜塔的<em>「傾斜」</em>本身也成為一種文化隱喻——象徵著<b>不完美中的美感與堅韌</b>。儘管自建造之初便因地基不均而持續傾斜，工程師歷經數百年持續監測與補強，至今仍屹立不倒,這種<em>「帶著缺陷卻依然挺立」</em>的姿態，反而讓它比任何完美對稱的建築更加深植人心。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>比薩斜塔本身是<b>主教座堂的獨立鐘樓</b>，高約56公尺，共8層，外觀以<b>白色大理石環形拱廊</b>層層堆疊,呈現出輕盈優雅的<em>羅馬式建築（Romanesque）</em>風格。建造工程始於<b>1173年</b>，但施工至第三層時，因地基土壤鬆軟不均而開始傾斜，工程因此一度中斷近百年。</p><p>後續建造者試圖以<em>「修正彎曲」</em>的方式補救——在傾斜的一側增建較高的樓層,使塔身呈現出微妙的<b>香蕉狀彎曲</b>，這種「將錯就錯」的補救手法，反而成為這座塔最獨特的建築印記。塔頂的鐘樓於1372年完工，至此整座建築歷時近兩百年才全部竣工。</p><p>1990年代，比薩斜塔的傾斜角度已達到危險程度，當局關閉塔樓並展開長達十年的<b>搶救工程</b>，透過在塔基北側移除土壤、安裝鋼纜錨定等方式,成功將傾斜角度<em>「校正」</em>約40公分，於2001年重新對外開放。如今塔身仍保持約<b>3.97度</b>的優雅傾斜，繼續向世人展示著<em>人類工程智慧與時間角力的精彩篇章</em>。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-pisa"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Toscana · 2026.05.16</span>
+    <span id="cnt-pisa"></span>
+  </div>
+</div>
+<!-- ══ SPOT: SAN_GIMIGNANO ══ -->
+<div class="spot-section" id="spot-san_gimignano">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 8 · 5/16</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">聖吉米納諾</div>
+      <div class="spot-en">San Gimignano · Toscana</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t15-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t15-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="77" cy="100" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="77" cy="100" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>聖吉米納諾的名稱源自<b>4世紀</b>的摩德納主教<b>聖吉米納諾</b>，相傳他庇護當地居民躲過匈人入侵而受到尊崇。中世紀時期，這座小鎮因位於連接羅馬與北歐的<b>法蘭奇傑納朝聖之路（Via Francigena）</b>上，成為朝聖者與商旅往來歇腳的重要驛站,商業與手工藝因而蓬勃發展。</p><p><b>12至13世紀</b>是聖吉米納諾的黃金年代，城內貴族家族為彰顯財富與權勢，競相興建高聳的<b>石造塔樓</b>，鼎盛時期全城共有多達<b>72座塔樓</b>，宛如一座中世紀的「摩天大樓城市」,當時兩大政治派系<em>歸爾甫派（教皇派）與吉伯林派（皇帝派）</em>之間的權力鬥爭,正是透過比拼塔樓高度來展現實力。</p><p>與西恩納相似，<b>1348年</b>的黑死病重創了聖吉米納諾,城市發展因此停滯,<b>1353年</b>更被迫歸順佛羅倫斯共和國,喪失獨立地位。然而正是這段被時代遺忘的歷史,讓聖吉米納諾的中世紀城市風貌得以完整凍結保存，<b>1990年</b>被列入<b>世界文化遺產</b>，獲得<em>「中世紀曼哈頓」</em>的美稱。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>聖吉米納諾保留至今的<b>14座塔樓</b>，是現存最完整的<em>中世紀塔樓城市景觀</em>之一，這些塔樓不僅是防禦工事，更是當時貴族家族<b>社會地位與政治權力的象徵</b>——塔樓越高,代表家族勢力越強盛,這種以建築高度競逐權力的現象,生動反映了中世紀義大利城邦社會的階級競爭文化。</p><p>這座小鎮也是<b>「vernaccia di San Gimignano」白葡萄酒</b>的原產地，這是托斯卡納地區第一個獲得官方認證原產地名稱(DOC)的葡萄酒,自中世紀以來便深受教廷與貴族喜愛,文藝復興詩人曾以詩句讚頌其<em>「金黃如陽光，香氣勝過天堂」</em>的獨特風味。</p><p>聖吉米納諾也因其完整保存的中世紀風貌,成為無數電影與電視劇的取景地，吸引藝術家與遊客前來感受那份<em>「時間靜止」</em>的氛圍。漫步於石板街道間，兩側林立的中世紀建築與高聳塔樓,讓人彷彿穿越回七百年前的托斯卡納，這種<em>身臨歷史現場</em>的真實感,正是聖吉米納諾最珍貴的文化資產。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>聖吉米納諾的城市格局完整保留了<b>中世紀防禦城鎮</b>的典型樣貌——整座小鎮被完整的<b>城牆</b>環繞，設有數座城門作為出入口，城內街道依山勢蜿蜒而上，狹窄的石板巷弄兩側,是以當地石材砌成的中世紀建築,色調統一呈現出溫暖的灰褐與蜂蜜黃。</p><p>城內現存的<b>「雙塔」（Torri dei Salvucci）</b>是兩座幾乎等高並肩而立的塔樓,相傳是同一家族兩兄弟為避免互相猜忌而興建成同樣高度,生動展現了當時貴族家族間既競爭又制衡的微妙關係。最高的<b>「波德斯塔塔」（Torre Grossa）</b>高約54公尺，登頂後可俯瞰整座古城與遠方連綿的托斯卡納丘陵與葡萄園。</p><p>市政廣場（Piazza della Cisterna）以三角形佈局鋪設著放射狀的人字形磚石地面，廣場中央保留著一座13世紀的水井,周圍環繞著塔樓與中世紀宅邸，傍晚時分,夕陽為石牆與塔樓染上溫暖的金橙色光澤,搭配遠方層疊的山丘剪影,構成一幅<em>典雅靜謐的托斯卡納山城畫卷</em>。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-san_gimignano"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Toscana · 2026.05.16</span>
+    <span id="cnt-san_gimignano"></span>
+  </div>
+</div>
+<!-- ══ SPOT: VENEZIA ══ -->
+<div class="spot-section" id="spot-venezia">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 10 · 5/18</span>
+        <span class="badge badge-unesco">☆ 世界文化遺產</span>
+      </div>
+      <div class="spot-title">威尼斯</div>
+      <div class="spot-en">Venezia · Veneto</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t16-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t16-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="97" cy="51" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="97" cy="51" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>威尼斯的建城起源於<b>5世紀</b>，當時為躲避日耳曼蠻族入侵，倫巴底地區的居民逃往潟湖中的小島群避難，逐漸發展成獨立聚落。<b>697年</b>，第一位<b>總督（Doge）</b>選出，威尼斯共和國正式成形，憑藉著潟湖天然屏障與優越的航運位置,逐步發展成地中海最強大的<b>海洋共和國</b>之一。</p><p><b>10至15世紀</b>是威尼斯的黃金時代，憑藉強大的艦隊壟斷東西方貿易航線,將香料、絲綢與奢侈品從拜占庭與東方世界運往歐洲各地,財富之鉅冠絕全歐。<b>1271年</b>，威尼斯商人<b>馬可·波羅</b>由此啟程前往中國，其著作《馬可波羅遊記》讓歐洲人首次得以窺見東方世界的奇景，威尼斯也因此成為<em>東西文明交匯</em>的橋樑。</p><p><b>1797年</b>，拿破崙率軍攻陷威尼斯，結束了這座共和國長達千年的獨立歷史。其後威尼斯先後歸屬奧地利與義大利統一王國,昔日的海上霸權雖已成歷史，但其獨特的水上城市風貌完整保存至今，<b>1987年</b>整座城市與其潟湖被列為<b>世界文化遺產</b>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>威尼斯被譽為<em>「世界上最浪漫的水上城市」</em>，整座城市建立於118座小島之上，由超過400座橋樑串聯，<b>運河取代了道路</b>，貢多拉（Gondola）與水上巴士成為主要交通工具,這種獨特的生活方式,使威尼斯成為全球唯一沒有汽車的主要城市,也讓它成為無數文學、繪畫與電影作品的靈感來源。</p><p>每年二月舉行的<b>威尼斯狂歡節（Carnevale di Venezia）</b>是世界三大狂歡節之一，源自18世紀貴族社會的傳統，人們戴上華麗精緻的面具,身著巴洛克風格服飾,在城市各個角落遊行慶祝,面具文化象徵著當時<em>「貴族與平民身分得以暫時隱去」</em>的特殊社會意義。</p><p>威尼斯也是<b>威尼斯雙年展（Biennale）與威尼斯電影節</b>的舉辦地,前者是全球最具影響力的當代藝術盛會之一,後者則是世界歷史最悠久的電影節。然而，作為水上城市，威尼斯也面臨著<b>「Acqua Alta」（潮災）</b>與遊客過度集中的雙重挑戰,如何在<em>保存傳統與面對現代化壓力</em>之間取得平衡，是這座千年古城持續面對的課題。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>威尼斯的建築融合了<b>拜占庭、哥德式與文藝復興</b>多種風格，最具代表性的<b>聖馬可大教堂（Basilica di San Marco）</b>以五座圓頂與金碧輝煌的馬賽克鑲嵌畫聞名，融合東西方裝飾藝術精華,被譯為<em>「黃金教堂」</em>，展現出威尼斯作為東西方文化交匯點的獨特美學。</p><p><b>聖馬可廣場（Piazza San Marco）</b>被拿破崙譽為<em>「歐洲最美的客廳」</em>，廣場一側矗立著高達98.6公尺的<b>鐘樓（Campanile）</b>，與華麗的<b>總督宮（Palazzo Ducale）</b>共同構成廣場的天際線。總督宮立面以粉紅與白色大理石交織的菱格紋裝飾,搭配尖拱式哥德窗框,呈現出輕盈通透的<em>「威尼斯哥德式」</em>建築語彙。</p><p>貫穿全城的<b>大運河（Canal Grande）</b>呈倒S形蜿蜿穿越市中心，兩側林立著數百座華麗的貴族宮殿，立面色彩斑斕,倒映在波光粼粼的水面上。<b>里阿爾托橋（Ponte di Rialto）</b>是橫跨大運河最古老、最著名的石橋，橋上設有商店拱廊，至今仍是威尼斯最繁忙的商業與觀光樞紐，<em>建築與水景完美交融</em>的畫面,正是威尼斯獨一無二的城市印記。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-venezia"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Veneto · 2026.05.18</span>
+    <span id="cnt-venezia"></span>
+  </div>
+</div>
+<!-- ══ SPOT: BURANO ══ -->
+<div class="spot-section" id="spot-burano">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 11 · 5/19</span>
+      </div>
+      <div class="spot-title">布拉諾島</div>
+      <div class="spot-en">Burano · Venezia</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t17-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t17-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="100" cy="48" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="100" cy="48" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>布拉諾島的歷史與威尼斯本島同樣久遠，相傳最早的居民也是<b>5世紀</b>為躲避蠻族入侵而遷居至潟湖島嶼的羅馬人後裔。由於島上土地貧瘠不適合農耕，居民自古便<b>以漁業為生</b>，世代與大海為伴，發展出與威尼斯本島截然不同的<em>樸實漁村文化</em>。</p><p>布拉諾自<b>16世紀</b>起便以<b>手工蕾絲（Burano Lace）</b>聞名於世，相傳當地漁夫的妻子們會模仿漁網編織的紋理,以針線繡製出精緻的蕾絲花樣。<b>16至18世紀</b>，布拉諾蕾絲深受歐洲皇室與貴族喜愛,成為威尼斯共和國重要的奢侈品出口項目之一,鼎盛時期島上幾乎家家戶戶的女性都從事蕾絲編織。</p><p>進入20世紀後，工業化生產的蕾絲逐漸取代手工製品，布拉諾的傳統工藝面臨失傳危機。<b>1872年</b>島上成立<b>蕾絲學校（Scuola di Merletti）</b>，致力於保存這項技藝，如今島上的<b>蕾絲博物館</b>仍展示著這段曾經輝煌的工藝史，成為布拉諾最珍貴的<em>文化記憶</em>。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>布拉諾島最廣為人知的<em>「彩色房屋」</em>傳統，據說源自於漁夫們<b>為了在濃霧瀰漫的潟湖中,從遠處就能辨認出自家房屋</b>而將外牆漆上鮮豔色彩,這套色彩系統甚至傳說受到當地政府的規範管理——居民若想更換房屋顏色,必須先提出申請並依循特定的色彩搭配規則。</p><p>這座小島也是義大利畫家<b>朱塞佩·桑托馬索（Giuseppe Santomaso）</b>等藝術家的靈感來源,色彩斑斕的房舍倒映在運河水面上,構成天然的<em>印象派畫布</em>,吸引無數畫家與攝影師前來捕捉這份獨特的視覺韻律。</p><p>儘管遊客眾多，布拉諾依然保留著<em>濃厚的漁村生活氣息</em>——清晨時分，漁船載著當日捕獲的海鮮返港,島上餐廳供應的海鮮料理新鮮道地，當地特產的<b>「Bussolà」甜餅</b>，是居民世代相傳的傳統點心。對威尼斯人而言,布拉諾代表著<em>「未被都市化吞噬的純樸鄉愁」</em>，是潟湖文化最溫暖人心的一面。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>風光特色</summary>
+    <div class="acc-body"><p>布拉諾島最令人驚艷的，是沿著運河兩側鱍次排列的房屋，每一棟都漆上<b>明豔飽和的色彩</b>——洋紅、土耳其藍、檸檬黃、薰衣草紫交錯排列,在陽光照耀下對比鮮明,彷彿一座<em>真實尺寸的彩色積木城</em>，與威尼斯本島沉穩典雅的石材建築形成強烈反差。</p><p>島上的<b>聖馬蒂諾主教堂（Chiesa di San Martino）</b>擁有一座明顯<b>傾斜的鐘樓</b>，與彩色房屋相映成趣,成為布拉諾的視覺地標之一。狹窄的運河上停泊著色彩鮮豔的小船,船身倒影與房屋色塊在水面上交織出<em>夢幻般的色彩漸層</em>，每一個轉角都是一幅天然的明信片風景。</p><p>傍晚時分，遊客逐漸散去,夕陽為彩色房屋鑲上一層溫暖的金邊,運河水面波光粼粼,當地居民坐在自家門前的小板凳上閒聊乘涼,孩童在窄巷間追逐嬉戲。這種<em>「色彩與寧靜並存」</em>的氛圍,正是布拉諾島最迷人、也最容易被忽略的一面風景。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-burano"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Venezia · 2026.05.19</span>
+    <span id="cnt-burano"></span>
+  </div>
+</div>
+<!-- ══ SPOT: LAGO DI GARDA ══ -->
+<div class="spot-section" id="spot-lago_di_garda">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 12 · 5/20</span>
+      </div>
+      <div class="spot-title">加達湖</div>
+      <div class="spot-en">Lago di Garda · Lombardia</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t18-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t18-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="72" cy="45" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="72" cy="45" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>加達湖是<b>義大利面積最大的湖泊</b>，由<b>冰河時期</b>冰川侵蝕地表所形成,其歷史可追溯至古羅馬時期——詩人<b>卡圖盧斯（Catullus）</b>與<b>維吉爾（Virgil）</b>皆曾在詩作中描寫這片湖泊的美景,當時羅馬貴族便已在湖畔興建別墅,作為避暑勝地。</p><p>中世紀時期，加達湖周邊因地處<b>威尼斯共和國、米蘭公國與神聖羅馬帝國</b>勢力交界，戰略地位重要,湖畔至今仍可見多座中世紀城堡與防禦工事，例如<b>西爾米奧內（Sirmione）</b>半島上的<b>史卡利傑羅城堡（Castello Scaligero）</b>，便是當年維洛納領主用以監控湖面航運的軍事要塞。</p><p><b>19世紀</b>起，隨著鐵路與旅遊業發展，加達湖逐漸從軍事要地轉型為<b>歐洲貴族與中產階級的度假天堂</b>，沿岸城鎮陸續興建起豪華別墅與花園飯店。<b>20世紀</b>後，加達湖更成為義大利國內外遊客最熱門的湖區度假地之一,湖畔的<b>溫泉與葡萄園文化</b>也隨之蓬勃發展,延續至今。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>加達湖長期以來是<em>「南北氣候的分界線」</em>——湖區南端氣候溫和,適合種植橄欖、檸檬與葡萄,北端則因阿爾卑斯山地形,氣候轉為涼爽,這種<b>「一湖兩種氣候」</b>的特殊現象，造就了湖區豐富多樣的農產與生態景觀,也孕育出獨具特色的<b>加達湖橄欖油與葡萄酒</b>產區。</p><p>湖區也是義大利文學與電影的重要場景——詩人<b>歌德</b>在《義大利遊記》中讚嘆加達湖<em>「宛如人間仙境」</em>，許多湖畔城鎮如西爾米奧內、加爾達（Garda）等，至今仍保留著悠久的溫泉療養傳統,自古羅馬時代便以溫泉聞名。</p><p>對於現代遊客而言，加達湖也是<em>家庭休閒與戶外活動</em>的熱門去處——湖區周邊設有大型主題樂園、高爾夫球場與帆船俱樂部,湖畔小鎮的露天咖啡座與市集,則延續著義大利北部悠閒愜意的<em>湖濱生活文化</em>，是結合自然風光與人文休閒的代表性度假區。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>自然奇景</summary>
+    <div class="acc-body"><p>加達湖呈狹長形，<b>南北長約52公里</b>，南部湖面開闔寬廣，沿岸地勢平緩,點綴著葡萄園與橄欖樹林;北部則逐漸收窄,兩岸山勢陡峭,阿爾卑斯山餘脈直逼湖岸，形成<em>「南方湖光、北方峽灣」</em>的強烈地形對比,是義大利地理景觀多樣性的縮影。</p><p>湖水呈現出迷人的<b>深邃藍綠色</b>，在晴朗的日子裡,湖面波光與遠方雪山形成鮮明對比——前景是地中海式的棕氮樹與檸檬園，背景卻是終年積雪的阿爾卑斯山峰,這種<em>「地中海與高山交會」</em>的奇特景觀組合,在歐洲湖泊中極為罕見。</p><p>湖區特有的<b>「Ora」風</b>是一種規律的午後湖風，由南向北吹拂,自古以來便是當地帆船與風箏衝浪愛好者最珍視的自然資源。傍晚時分,夕陽沉入湖面,將整片湖水染成<em>金紅色的綢緞般光澤</em>，湖畔山城的燈火逐一亮起,倒映在波光粼粼的水面上，構成一幅<em>寧靜而壯闊</em>的湖區暮色畫卷。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-lago_di_garda"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Lombardia · 2026.05.20</span>
+    <span id="cnt-lago_di_garda"></span>
+  </div>
+</div>
+<!-- ══ SPOT: MILANO ══ -->
+<div class="spot-section" id="spot-milano">
+  <div class="spot-head">
+    <div class="spot-head-left">
+      <div class="spot-eyebrow">
+        <span class="badge badge-day">DAY 13 · 5/21</span>
+      </div>
+      <div class="spot-title">米蘭</div>
+      <div class="spot-en">Milano · Lombardia</div>
+    </div>
+    <div class="map-thumb" onclick="openMap()" title="開啟義大利地圖">
+      <div class="map-thumb-box"><svg viewBox="0 0 200 280" width="72" height="112" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="t19-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#t19-main)">
+    <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+    <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+    <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+    <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+  </g>
+  
+  <circle cx="49" cy="51" r="5" fill="#1a4a2e" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="49" cy="51" r="8" fill="#1a4a2e" opacity="0.18"/>
+</svg></div>
+      <div class="map-thumb-label">🗺 查看地圖</div>
+    </div>
+  </div>
+  <div class="accordion">
+  <details class="acc-item">
+    <summary>歷史沿革</summary>
+    <div class="acc-body"><p>米蘭建城於<b>西元前4世紀</b>，最初由<b>凱爾特人</b>建立，後被羅馬人征服並命名為「Mediolanum」，因地處重要交通樞紐,逐漸發展成羅馬帝國西部的重要城市，<b>西元286年</b>甚至一度成為<b>西羅馬帝國的首都</b>。</p><p>中世紀至文藝復興時期，米蘭在<b>維斯孔蒂家族與斯福爾扎家族</b>的統治下達到鼎盛，成為北義大利最具影響力的公國之一。<b>1495年</b>，<b>達文西</b>受米蘭公爵之邀,於恩寵聖母教堂創作了傳世名作《最後的晚餐》，米蘭因此成為文藝復興藝術重要的發展中心之一。</p><p><b>19世紀</b>義大利統一後，米蘭迅速發展成全國<b>工業與金融中心</b>，<b>20世紀</b>更躍升為世界知名的<b>時尚與設計之都</b>。儘管二次大戰期間遭受嚴重轟炸破壞,米蘭以驚人的速度重建,並持續引領義大利的現代化進程,成為今日義大利經濟與創意產業的領頭城市。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>文化意義</summary>
+    <div class="acc-body"><p>米蘭是全球四大<b>時尚之都</b>之一，與紐約、巴黎、倫敦並列，<b>Armani、Versace、Prada、Dolce & Gabbana</b>等國際頂級品牌總部皆設於此，每年二月與九月舉辦的<b>米蘭時裝週</b>，是全球時尚產業最重要的盛事之一,吸引無數設計師、買家與媒體聚焦。</p><p>米蘭也是義大利<b>歌劇文化</b>的核心——<b>史卡拉歌劇院（Teatro alla Scala）</b>自1778年啟用以來,便是世界最頂尖的歌劇院之一，威爾第、普契尼等大師的作品皆曾在此首演,至今仍是全球聲樂家心中<em>最高榮耀的舞台</em>之一。</p><p>達文西的《最後的晚餐》壁畫不僅是藝術史上的傑作，更承載著<em>「文藝復興人文精神」</em>的深刻意涵——畫面中耶穌與十二門徒的神情與動態,展現出達文西對人性心理的細膩觀察,這幅作品歷經五百多年的修復與保存爭議,如今依然是全球藝術愛好者朝聖的對象,象徵著米蘭<em>「古典與現代交融」</em>的城市性格。</p></div>
+  </details>
+  <details class="acc-item">
+    <summary>建築特色</summary>
+    <div class="acc-body"><p>米蘭主教座堂（<b>Duomo di Milano</b>）是世界上最大的<b>哥德式教堂</b>之一，工程始於<b>1386年</b>，歷時近六百年才於20世紀初全部完工。教堂外觀布滿超過<b>3400座雕像</b>與135座尖塔，密度之高令人嘆為觀止，屋頂平台更可供遊客近距離欣賞這些精雕細琢的石雕細節，並遠眺米蘭市區與晴朗時可見的阿爾卑斯山輪廓。</p><p>緊鄰主教座堂的<b>艾曼紐二世迴廊（Galleria Vittorio Emanuele II）</b>，是<b>19世紀</b>建造的玻璃鐵架拱頂購物長廊，地面以精緻的馬賽克鑲嵌畫裝飾,代表義大利各大城市的徽章圖案,被譽為<em>「世界上最優雅的購物中心」</em>，是工業時代建築與古典裝飾藝術完美結合的範例。</p><p>米蘭同時也是<b>現代建築</b>的展示場——<b>「垂直森林」（Bosco Verticale）</b>是兩座種滿樹木與植物的摩天住宅大樓,將綠化理念融入垂直城市空間,展現出米蘭<em>「傳統哥德尖塔與當代綠色建築並存」</em>的獨特城市天際線,反映出這座城市持續創新求變的設計精神。</p></div>
+  </details>
+  </div>
+  <div class="photo-wrap">
+    <div class="section-label">旅行實拍</div>
+    <div class="masonry" id="grid-milano"></div>
+  </div>
+  <div class="card-foot">
+    <span>📍 Lombardia · 2026.05.21</span>
+    <span id="cnt-milano"></span>
+  </div>
+</div>
+
+
+<!-- ══ MAP MODAL ══ -->
+<div class="modal-bg" id="mapModal" onclick="if(event.target===this)closeMap()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span class="modal-head-title">🇮🇹 &nbsp;義大利行程地圖</span>
+      <button class="modal-close" onclick="closeMap()">✕</button>
+    </div>
+    <div class="modal-map-wrap">
+      <div class="modal-hint">點選城市圓點，直接跳至該景點</div>
+      <svg viewBox="0 0 200 280" width="280" height="392" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="mm-main"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath>
+        </defs>
+        <g clip-path="url(#mm-main)">
+          <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+          <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+          <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+          <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+        </g>
+        <ellipse cx="126" cy="176" rx="5.5" ry="2.8" fill="#d4ecd4" stroke="#1a4a2e" stroke-width="0.8" opacity="0.85"/>
+        <!-- 米蘭 -->
+        <g class="cdot" onclick="gotoSpot('milano')">
+          <circle class="dot" cx="49" cy="51" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="49" y1="51" x2="42" y2="58" stroke="#999" stroke-width="0.5"/>
+          <text x="41" y="58.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">米蘭</text>
+        </g>
+        <!-- 加達湖 -->
+        <g class="cdot" onclick="gotoSpot('garda')">
+          <circle class="dot" cx="72" cy="45" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="72" y1="45" x2="65" y2="37" stroke="#999" stroke-width="0.5"/>
+          <text x="64" y="36.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">加達湖</text>
+        </g>
+        <!-- 布拉諾 -->
+        <g class="cdot" onclick="gotoSpot('burano')">
+          <circle class="dot" cx="100" cy="48" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="100" y1="48" x2="110" y2="42" stroke="#999" stroke-width="0.5"/>
+          <text x="111" y="42.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">布拉諾</text>
+        </g>
+        <!-- 威尼斯 -->
+        <g class="cdot" onclick="gotoSpot('venezia')">
+          <circle class="dot" cx="97" cy="51" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="97" y1="51" x2="104" y2="56" stroke="#999" stroke-width="0.5"/>
+          <text x="105" y="56.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">威尼斯</text>
+        </g>
+        <!-- 比薩（10點鐘） -->
+        <g class="cdot" onclick="gotoSpot('pisa')">
+          <circle class="dot" cx="68" cy="94" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="68" y1="94" x2="59" y2="87" stroke="#999" stroke-width="0.5"/>
+          <text x="58" y="87.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">比薩</text>
+        </g>
+        <!-- 佛羅倫斯 -->
+        <g class="cdot" onclick="gotoSpot('firenze')">
+          <circle class="dot" cx="79" cy="93" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="79" y1="93" x2="87" y2="88" stroke="#999" stroke-width="0.5"/>
+          <text x="88" y="88.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">佛羅倫斯</text>
+        </g>
+        <!-- 聖吉米尼亞諾 -->
+        <g class="cdot" onclick="gotoSpot('sangimignano')">
+          <circle class="dot" cx="77" cy="100" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="77" y1="100" x2="65" y2="104" stroke="#999" stroke-width="0.5"/>
+          <text x="64" y="104.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">聖吉米尼亞諾</text>
+        </g>
+        <!-- 托斯卡尼農莊 -->
+        <g class="cdot" onclick="gotoSpot('toscana')">
+          <circle class="dot" cx="85" cy="106" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="85" y1="106" x2="73" y2="113" stroke="#999" stroke-width="0.5"/>
+          <text x="72" y="113.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">托斯卡尼</text>
+        </g>
+        <!-- 西恩納（3點鐘） -->
+        <g class="cdot" onclick="gotoSpot('siena')">
+          <circle class="dot" cx="82" cy="104" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="82" y1="104" x2="91" y2="104" stroke="#999" stroke-width="0.5"/>
+          <text x="92" y="104.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">西恩納</text>
+        </g>
+        <!-- 天空之城（8點鐘） -->
+        <g class="cdot" onclick="gotoSpot('civita')">
+          <circle class="dot" cx="93" cy="121" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="93" y1="121" x2="83" y2="129" stroke="#999" stroke-width="0.5"/>
+          <text x="82" y="129.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">天空之城</text>
+        </g>
+        <!-- 羅馬 -->
+        <g class="cdot" onclick="gotoSpot('roma', event)">
+          <circle class="dot" cx="99" cy="139" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="99" y1="139" x2="107" y2="133" stroke="#999" stroke-width="0.5"/>
+          <text x="108" y="133.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">羅馬</text>
+        </g>
+        <!-- 梵蒂岡 -->
+        <g class="cdot" onclick="gotoSpot('vaticano')">
+          <circle class="dot" cx="96" cy="141" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="96" y1="141" x2="87" y2="147" stroke="#999" stroke-width="0.5"/>
+          <text x="86" y="147.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">梵蒂岡</text>
+        </g>
+        <!-- 龐貝 -->
+        <g class="cdot" onclick="gotoSpot('pompeii')">
+          <circle class="dot" cx="129" cy="167" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="129" y1="167" x2="139" y2="162" stroke="#999" stroke-width="0.5"/>
+          <text x="140" y="162.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">龐貝</text>
+        </g>
+        <!-- 蘇連多／波西塔諾（10點鐘） -->
+        <g class="cdot" onclick="gotoSpot('positano')">
+          <circle class="dot" cx="130" cy="170" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="130" y1="170" x2="121" y2="163" stroke="#999" stroke-width="0.5"/>
+          <text x="120" y="163.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">蘇連多／波西塔諾</text>
+        </g>
+        <!-- 阿貝羅貝羅 -->
+        <g class="cdot" onclick="gotoSpot('alberobello')">
+          <circle class="dot" cx="171" cy="166" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="171" y1="166" x2="171" y2="156" stroke="#999" stroke-width="0.5"/>
+          <text x="171" y="155.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="middle">阿貝羅貝羅</text>
+        </g>
+        <!-- 馬特拉（4點鐘） -->
+        <g class="cdot" onclick="gotoSpot('matera')">
+          <circle class="dot" cx="161" cy="169" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="161" y1="169" x2="174" y2="180" stroke="#999" stroke-width="0.5"/>
+          <text x="175" y="180.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif">馬特拉</text>
+        </g>
+        <!-- 藍洞（7點鐘） -->
+        <g class="cdot" onclick="gotoSpot('grotto')">
+          <circle class="dot" cx="126" cy="172" r="3.5" fill="#888" stroke="#fff" stroke-width="1.2"/>
+          <line x1="126" y1="172" x2="116" y2="186" stroke="#999" stroke-width="0.5"/>
+          <text x="115" y="186.5" font-size="7.5" fill="#000" font-family="'Microsoft JhengHei',Arial,sans-serif" text-anchor="end">藍洞</text>
+        </g>
+      </svg>
+      <div id="map-submenu"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FLOATING MAP BUTTON ══ -->
+<button id="float-map" onclick="openMap()" title="查看行程地圖">
+  <svg viewBox="10 5 180 270" width="54" height="54" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="fm-clip"><path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z"/></clipPath></defs>
+    <g clip-path="url(#fm-clip)">
+      <rect x="0" y="0" width="66" height="280" fill="#009246"/>
+      <rect x="66" y="0" width="68" height="280" fill="#f5f5f5"/>
+      <rect x="134" y="0" width="70" height="280" fill="#CE2B37"/>
+      <path d="M96.3,18.6 L118.3,25 L116.6,37.2 L120.3,47.8 L108.1,44.2 L95.6,52.9 L96.5,65.2 L94.6,72.3 L99.6,84.9 L114,97.4 L121.7,117.9 L138.8,137.8 L150.8,137.7 L154.5,143.2 L150.2,148.1 L164,157 L175.3,164.5 L188.4,177.5 L190,182.1 L187.1,191 L178.6,179.4 L165.3,175.3 L158.8,191.3 L169.9,200.5 L168.1,213.4 L161.7,214.9 L153.5,236.2 L147.1,238.1 L147.2,230.5 L150.3,217.2 L153.6,211.9 L147.6,197.6 L142.9,185.1 L136.6,182 L132,171.3 L122.2,166.8 L115.5,156.8 L104.2,155.2 L92.2,144 L78.2,127.9 L67.7,113.6 L62.9,89.2 L55.3,86.3 L42.8,78.1 L35.8,81.4 L26.9,92.9 L20.5,94.8 L22.3,84 L14,80.9 L10,61.7 L15.3,54.2 L10.8,44.9 L11.4,37.9 L18,43.2 L25.4,42 L34,33.6 L36.7,37.5 L44,36.7 L47.3,26.7 L58.7,29.8 L65.4,25.7 L66.7,15.5 L76,19 L77.7,14.3 L92.9,10 Z" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    </g>
+  </svg>
+</button>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="navLb(-1)">‹</button>
+  <div class="lb-img-wrap">
+    <img id="lb-img" src="" alt="" loading="lazy">
+    <div class="lb-cap" id="lb-cap"></div>
+  </div>
+  <button class="lb-nav lb-next" onclick="navLb(1)">›</button>
+</div>
+
+<script>
+// ── MANIFEST（由 _build.py 自動生成）──
+const SPOTS = {
+  "matera": {
+    label: "\u99ac\u7279\u62c9",
+    dir:   "photos/Matera",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp"]
+  },
+  "alberobello": {
+    label: "\u963f\u8c9d\u7f85\u8c9d\u7f85",
+    dir:   "photos/Alberobello",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp"]
+  },
+  "grotto": {
+    label: "\u85cd\u6d1e",
+    dir:   "photos/Capri_Island_Grotta Azzurra",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp"]
+  },
+  "sorrento_positano": {
+    label: "\u8607\u9023\u591a\uff0f\u6ce2\u897f\u5854\u8afe",
+    dir:   "photos/Sorrento_Positano",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp"]
+  },
+  "pompeii": {
+    label: "\u9f90\u8c9d",
+    dir:   "photos/Pompeii",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp"]
+  },
+  "roma_fontana_di_trevi_fontana_dei_quattro_fiumi": {
+    label: "\u8a31\u9858\u6c60\u30fb\u56db\u6cb3\u5674\u6cc9",
+    dir:   "photos/Roma_Fontana di Trevi_Fontana dei Quattro Fiumi",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp"]
+  },
+  "roma_pantheon": {
+    label: "\u842c\u795e\u6bbf",
+    dir:   "photos/Roma_Pantheon",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp"]
+  },
+  "roma_piazza_di_spagna": {
+    label: "\u897f\u73ed\u7259\u5ee3\u5834",
+    dir:   "photos/Roma_Piazza di Spagna",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp"]
+  },
+  "roma_colosseo": {
+    label: "\u7af6\u6280\u5834",
+    dir:   "photos/Roma_Colosseo",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp"]
+  },
+  "vaticano": {
+    label: "\u68b5\u8482\u5ca1",
+    dir:   "photos/Vaticano",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp"]
+  },
+  "bagnoregio": {
+    label: "\u5929\u7a7a\u4e4b\u57ce",
+    dir:   "photos/Bagnoregio",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp"]
+  },
+  "siena": {
+    label: "\u897f\u6069\u7d0d",
+    dir:   "photos/Siena",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp"]
+  },
+  "toscana": {
+    label: "\u6258\u65af\u5361\u7d0d\u838a\u5712",
+    dir:   "photos/TOSCANA",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp"]
+  },
+  "firenze_galleria_degli_uffizi": {
+    label: "\u4f5b\u7f85\u502b\u65af\u30fb\u70cf\u83f2\u8332\u7f8e\u8853\u9928",
+    dir:   "photos/Firenze_Galleria degli Uffizi",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp", "094.webp", "095.webp", "096.webp", "097.webp", "098.webp", "099.webp", "100.webp", "101.webp", "102.webp", "103.webp", "104.webp", "105.webp", "106.webp", "107.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp", "094.webp", "095.webp", "096.webp", "097.webp", "098.webp", "099.webp", "100.webp", "101.webp", "102.webp", "103.webp", "104.webp", "105.webp", "106.webp", "107.webp"]
+  },
+  "pisa": {
+    label: "\u6bd4\u85a9",
+    dir:   "photos/Pisa",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp"]
+  },
+  "san_gimignano": {
+    label: "\u8056\u5409\u7c73\u7d0d\u8afe",
+    dir:   "photos/San_Gimignano",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp"]
+  },
+  "venezia": {
+    label: "\u5a01\u5c3c\u65af",
+    dir:   "photos/Venezia",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp", "094.webp", "095.webp", "096.webp", "097.webp", "098.webp", "099.webp", "100.webp", "101.webp", "102.webp", "103.webp", "104.webp", "105.webp", "106.webp", "107.webp", "108.webp", "109.webp", "110.webp", "111.webp", "112.webp", "113.webp", "114.webp", "115.webp", "116.webp", "117.webp", "118.webp", "119.webp", "120.webp", "121.webp", "122.webp", "123.webp", "124.webp", "125.webp", "126.webp", "127.webp", "128.webp", "129.webp", "130.webp", "131.webp", "132.webp", "133.webp", "134.webp", "135.webp", "136.webp", "137.webp", "138.webp", "139.webp", "140.webp", "141.webp", "142.webp", "143.webp", "144.webp", "145.webp", "146.webp", "147.webp", "148.webp", "149.webp", "150.webp", "151.webp", "152.webp", "153.webp", "154.webp", "155.webp", "156.webp", "157.webp", "158.webp", "159.webp", "160.webp", "161.webp", "162.webp", "163.webp", "164.webp", "165.webp", "166.webp", "167.webp", "168.webp", "169.webp", "170.webp", "171.webp", "172.webp", "173.webp", "174.webp", "175.webp", "176.webp", "177.webp", "178.webp", "179.webp", "180.webp", "181.webp", "182.webp", "183.webp", "184.webp", "185.webp", "186.webp", "187.webp", "188.webp", "189.webp", "190.webp", "191.webp", "192.webp", "193.webp", "194.webp", "195.webp", "196.webp", "197.webp", "198.webp", "199.webp", "200.webp", "201.webp", "202.webp", "203.webp", "204.webp", "205.webp", "206.webp", "207.webp", "208.webp", "209.webp", "210.webp", "211.webp", "212.webp", "213.webp", "214.webp", "215.webp", "216.webp", "217.webp", "218.webp", "219.webp", "220.webp", "221.webp", "222.webp", "223.webp", "224.webp", "225.webp", "226.webp", "227.webp", "228.webp", "229.webp", "230.webp", "231.webp", "232.webp", "233.webp", "234.webp", "235.webp", "236.webp", "237.webp", "238.webp", "239.webp", "240.webp", "241.webp", "242.webp", "243.webp", "244.webp", "245.webp", "246.webp", "247.webp", "248.webp", "249.webp", "250.webp", "251.webp", "252.webp", "253.webp", "254.webp", "255.webp", "256.webp", "257.webp", "258.webp", "259.webp", "260.webp", "261.webp", "262.webp", "263.webp", "264.webp", "265.webp", "266.webp", "267.webp", "268.webp", "269.webp", "270.webp", "271.webp", "272.webp", "273.webp", "274.webp", "275.webp", "276.webp", "277.webp", "278.webp", "279.webp", "280.webp", "281.webp", "282.webp", "283.webp", "284.webp", "285.webp", "286.webp", "287.webp", "288.webp", "289.webp", "290.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp", "094.webp", "095.webp", "096.webp", "097.webp", "098.webp", "099.webp", "100.webp", "101.webp", "102.webp", "103.webp", "104.webp", "105.webp", "106.webp", "107.webp", "108.webp", "109.webp", "110.webp", "111.webp", "112.webp", "113.webp", "114.webp", "115.webp", "116.webp", "117.webp", "118.webp", "119.webp", "120.webp", "121.webp", "122.webp", "123.webp", "124.webp", "125.webp", "126.webp", "127.webp", "128.webp", "129.webp", "130.webp", "131.webp", "132.webp", "133.webp", "134.webp", "135.webp", "136.webp", "137.webp", "138.webp", "139.webp", "140.webp", "141.webp", "142.webp", "143.webp", "144.webp", "145.webp", "146.webp", "147.webp", "148.webp", "149.webp", "150.webp", "151.webp", "152.webp", "153.webp", "154.webp", "155.webp", "156.webp", "157.webp", "158.webp", "159.webp", "160.webp", "161.webp", "162.webp", "163.webp", "164.webp", "165.webp", "166.webp", "167.webp", "168.webp", "169.webp", "170.webp", "171.webp", "172.webp", "173.webp", "174.webp", "175.webp", "176.webp", "177.webp", "178.webp", "179.webp", "180.webp", "181.webp", "182.webp", "183.webp", "184.webp", "185.webp", "186.webp", "187.webp", "188.webp", "189.webp", "190.webp", "191.webp", "192.webp", "193.webp", "194.webp", "195.webp", "196.webp", "197.webp", "198.webp", "199.webp", "200.webp", "201.webp", "202.webp", "203.webp", "204.webp", "205.webp", "206.webp", "207.webp", "208.webp", "209.webp", "210.webp", "211.webp", "212.webp", "213.webp", "214.webp", "215.webp", "216.webp", "217.webp", "218.webp", "219.webp", "220.webp", "221.webp", "222.webp", "223.webp", "224.webp", "225.webp", "226.webp", "227.webp", "228.webp", "229.webp", "230.webp", "231.webp", "232.webp", "233.webp", "234.webp", "235.webp", "236.webp", "237.webp", "238.webp", "239.webp", "240.webp", "241.webp", "242.webp", "243.webp", "244.webp", "245.webp", "246.webp", "247.webp", "248.webp", "249.webp", "250.webp", "251.webp", "252.webp", "253.webp", "254.webp", "255.webp", "256.webp", "257.webp", "258.webp", "259.webp", "260.webp", "261.webp", "262.webp", "263.webp", "264.webp", "265.webp", "266.webp", "267.webp", "268.webp", "269.webp", "270.webp", "271.webp", "272.webp", "273.webp", "274.webp", "275.webp", "276.webp", "277.webp", "278.webp", "279.webp", "280.webp", "281.webp", "282.webp", "283.webp", "284.webp", "285.webp", "286.webp", "287.webp", "288.webp", "289.webp", "290.webp"]
+  },
+  "burano": {
+    label: "\u5e03\u62c9\u8afe\u5cf6",
+    dir:   "photos/Burano",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp"]
+  },
+  "lago_di_garda": {
+    label: "\u52a0\u9054\u6e56",
+    dir:   "photos/Lago di Garda",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp"]
+  },
+  "milano": {
+    label: "\u7c73\u862d",
+    dir:   "photos/Milano",
+    thumb: ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp"],
+    full:  ["001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp"]
+  }
+};
+
+function buildGrid(spotKey, gridId, cntId) {
+  const data = SPOTS[spotKey];
+  const g = document.getElementById(gridId);
+  if (!g) return;
+  data.thumb.forEach((file, i) => {
+    const d = document.createElement('div');
+    d.className = 'photo-item';
+    d.innerHTML = `<img src="${data.dir}/thumb/${file}" loading="lazy" alt="${data.label} · ${i+1}">
+      <div class="photo-ov"><div class="photo-cap">${data.label} · ${i+1}</div></div>`;
+    d.onclick = () => openLb(spotKey, i);
+    g.appendChild(d);
+  });
+  document.getElementById(cntId).textContent = data.thumb.length + ' 張照片';
+}
+Object.keys(SPOTS).forEach(k => buildGrid(k, 'grid-' + k, 'cnt-' + k));
+
+function openMap()  { document.getElementById('mapModal').classList.add('open'); }
+function closeMap() {
+  document.getElementById('mapModal').classList.remove('open');
+  document.getElementById('map-submenu').classList.remove('open');
+}
+
+const ANCHORS  = {"matera": "spot-matera", "alberobello": "spot-alberobello", "grotto": "spot-grotto", "positano": "spot-sorrento_positano", "pompeii": "spot-pompeii", "roma": "spot-roma_fontana_di_trevi_fontana_dei_quattro_fiumi", "vaticano": "spot-vaticano", "civita": "spot-bagnoregio", "siena": "spot-siena", "toscana": "spot-toscana", "firenze": "spot-firenze_galleria_degli_uffizi", "pisa": "spot-pisa", "sangimignano": "spot-san_gimignano", "venezia": "spot-venezia", "burano": "spot-burano", "garda": "spot-lago_di_garda", "milano": "spot-milano"};
+const SUBMENUS = {"roma": [{"label": "許願池・四河噴泉", "anchor": "spot-roma_fontana_di_trevi_fontana_dei_quattro_fiumi"}, {"label": "萬神殿", "anchor": "spot-roma_pantheon"}, {"label": "西班牙廣場", "anchor": "spot-roma_piazza_di_spagna"}, {"label": "競技場", "anchor": "spot-roma_colosseo"}]};
+
+function gotoSpot(id, event) {
+  if (SUBMENUS[id]) {
+    showSubmenu(id, event);
+    return;
+  }
+  closeMap();
+  setTimeout(() => {
+    const el = document.getElementById(ANCHORS[id]);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 220);
+}
+
+function showSubmenu(id, event) {
+  event.stopPropagation();
+  const menu = document.getElementById('map-submenu');
+  menu.innerHTML = SUBMENUS[id].map(it =>
+    `<div class="submenu-item" onclick="jumpTo('${it.anchor}')">${it.label}</div>`
+  ).join('');
+  const wrap = document.querySelector('.modal-map-wrap');
+  const rect = wrap.getBoundingClientRect();
+  let x = event.clientX - rect.left;
+  let y = event.clientY - rect.top;
+  menu.classList.add('open');
+  // 避免超出右邊界
+  if (x + 140 > wrap.offsetWidth) x = wrap.offsetWidth - 145;
+  menu.style.left = x + 'px';
+  menu.style.top  = (y + 6) + 'px';
+}
+
+function jumpTo(anchor) {
+  closeMap();
+  setTimeout(() => {
+    const el = document.getElementById(anchor);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 220);
+}
+
+// 點地圖空白處關閉子選單
+document.getElementById('mapModal').addEventListener('click', () => {
+  document.getElementById('map-submenu').classList.remove('open');
+});
+
+let lbSpot = Object.keys(SPOTS)[0], curIdx = 0;
+function openLb(spot, idx) {
+  lbSpot = spot; curIdx = idx;
+  document.getElementById('lb').classList.add('open');
+  updateLb();
+}
+function updateLb() {
+  const data = SPOTS[lbSpot];
+  const img = document.getElementById('lb-img');
+  img.src = `${data.dir}/full/${data.full[curIdx]}`;
+  img.alt = `${data.label} · ${curIdx + 1}`;
+  document.getElementById('lb-cap').textContent = `${data.label} · ${curIdx + 1}`;
+}
+function closeLb() { document.getElementById('lb').classList.remove('open'); }
+function navLb(d) {
+  const total = SPOTS[lbSpot].full.length;
+  curIdx = (curIdx + d + total) % total;
+  updateLb();
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft')  navLb(-1);
+  else if (e.key === 'ArrowRight') navLb(1);
+  else if (e.key === 'Escape') closeLb();
+});
+</script>
+
+</body>
+</html>
